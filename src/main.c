@@ -6,7 +6,7 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 19:32:55 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/11/11 19:33:32 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/11/12 15:47:46 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,6 @@
 int	main(void)
 {
 	printf("cub3D starting...\n");
+    
 	return (0);
 }
