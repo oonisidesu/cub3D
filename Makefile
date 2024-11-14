@@ -11,6 +11,14 @@ LIBFT = $(LIBFT_DIR)/libft.a
 MLX_DIR = ./minilibx
 MLX_LIB = $(MLX_DIR)/libmlx.a
 
+GTEST_DIR = /usr/local
+GTEST_LIBS = $(GTEST_DIR)/lib/libgtest.a $(GTEST_DIR)/lib/libgtest_main.a -pthread  # 直接指定
+
+UNIT_TEST_NAME = unit_tests
+UNIT_TEST_SRC = test/unit/unit.cpp
+
+E2E_TEST_SCRIPT = test/e2e/runner.sh
+
 $(NAME): $(OBJS) $(LIBFT) $(MLX_LIB)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) -L$(LIBFT_DIR) -lft -L$(MLX_DIR) -lmlx -lm -lXext -lX11
 
@@ -22,8 +30,18 @@ $(MLX_LIB):
 
 all: $(NAME)
 
+$(UNIT_TEST_NAME): $(UNIT_TEST_SRC)
+	g++ $(CFLAGS) -o $(UNIT_TEST_NAME) $(UNIT_TEST_SRC) -I$(GTEST_DIR)/include $(GTEST_LIBS)
+
+unit_test: $(UNIT_TEST_NAME)
+	./$(UNIT_TEST_NAME)
+
+e2e_test:
+	chmod +x $(E2E_TEST_SCRIPT)
+	./$(E2E_TEST_SCRIPT)
+
 clean:
-	rm -f $(OBJS)
+	rm -f $(OBJS) $(UNIT_TEST_NAME)
 	make -C $(LIBFT_DIR) clean
 	make -C $(MLX_DIR) clean
 

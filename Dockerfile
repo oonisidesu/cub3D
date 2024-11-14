@@ -11,7 +11,15 @@ RUN apt-get update && apt-get install -y \
     libxinerama-dev \
     libxcursor-dev \
     make \
-    gcc
+    gcc \
+    cmake \
+    git
+
+RUN git clone https://github.com/google/googletest.git /googletest && \
+    cd /googletest && \
+    cmake . && \
+    make && \
+    make install
 
 WORKDIR /cub3d
 COPY . .
