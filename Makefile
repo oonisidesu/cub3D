@@ -1,9 +1,9 @@
 NAME = cub3D
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -Iinclude
 
-SRCS = src/main.c
+SRCS = src/main.c src/get_next_line.c src/get_next_line_utils.c
 OBJS = $(SRCS:.c=.o)
 
 LIBFT_DIR = ./libft
