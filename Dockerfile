@@ -15,11 +15,14 @@ RUN apt-get update && apt-get install -y \
     cmake \
     git
 
-RUN git clone https://github.com/google/googletest.git /googletest && \
+RUN git clone --depth 1 --branch release-1.12.1 https://github.com/google/googletest.git /googletest && \
     cd /googletest && \
-    cmake . && \
+    cmake -DCMAKE_BUILD_TYPE=Release . && \
     make && \
-    make install
+    make install && \
+    cd / && \
+    rm -rf /googletest && \
+    ldconfig
 
 WORKDIR /cub3d
 COPY . .
