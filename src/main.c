@@ -6,37 +6,19 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 19:32:55 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/11/14 18:14:48 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/11/15 16:01:22 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+#include "display.h"
 #include "get_next_line.h"
+#include "init.h"
+#include "parse.h"
 #include <fcntl.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-
-void	parse_cub_file(const char *filename, t_cub3d *game)
-{
-	int		fd;
-	char	*line;
-
-	(void)game;
-	fd = open(filename, O_RDONLY);
-	if (fd < 0)
-	{
-		perror("Error opening file");
-		return ;
-	}
-	while ((line = get_next_line(fd)) != NULL)
-	{
-		// TODO: テクスチャ情報、色情報、マップ行の仮チェックを行う
-		printf("Parsed line: %s", line);
-		free(line);
-	}
-	close(fd);
-}
 
 // エラーメッセージと使用方法の表示
 void	display_usage_and_exit(const char *program_name)
@@ -52,7 +34,9 @@ int	main(int argc, char **argv)
 		display_usage_and_exit(argv[0]);
 	}
 	t_cub3d game;                   // ゲームデータの構造体を作成
+	init_game_data(&game);          // ゲームデータの初期化
 	parse_cub_file(argv[1], &game); // パース処理の呼び出し
+	display_cub3d(&game);
 	// TODO: パースされたデータを用いて描画処理やゲームロジックを開始する
 	// 正常終了
 	return (0);
