@@ -1,10 +1,13 @@
 NAME = cub3D
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -Iinclude
+CFLAGS = -Wall -Wextra -Werror -Iinclude -I./libft
 
 SRCS = src/main.c \
-		src/gnl/get_next_line.c src/gnl/get_next_line_utils.c
+		src/display/display_info.c \
+		src/gnl/get_next_line.c src/gnl/get_next_line_utils.c \
+		src/init/init_data.c \
+		src/parse/parse_color_line.c src/parse/parse_cub_file.c src/parse/parse_map_line.c src/parse/parse_texture_line.c
 OBJS = $(SRCS:.c=.o)
 
 LIBFT_DIR = ./libft
@@ -24,7 +27,7 @@ $(NAME): $(OBJS) $(LIBFT) $(MLX_LIB)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) -L$(LIBFT_DIR) -lft -L$(MLX_DIR) -lmlx -lm -lXext -lX11
 
 $(LIBFT):
-	make -C $(LIBFT_DIR)
+	make -C $(LIBFT_DIR) bonus
 
 $(MLX_LIB):
 	make -C $(MLX_DIR)
