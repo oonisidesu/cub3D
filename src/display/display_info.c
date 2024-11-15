@@ -6,7 +6,7 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 14:56:47 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/11/15 15:50:18 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/11/15 18:31:56 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 // テクスチャ情報を表示する関数
 void	display_textures(t_texture *textures)
 {
-	printf("North Texture: %s\n", textures->north);
-	printf("South Texture: %s\n", textures->south);
-	printf("West Texture: %s\n", textures->west);
-	printf("East Texture: %s\n", textures->east);
+	printf("North Texture: %s", textures->north);
+	printf("South Texture: %s", textures->south);
+	printf("West Texture: %s", textures->west);
+	printf("East Texture: %s", textures->east);
 }
 
 // カラー情報を表示する関数
@@ -36,7 +36,7 @@ void	display_map(t_map *map)
 	printf("Map Width: %d, Height: %d\n", map->width, map->height);
 	for (int i = 0; i < map->height; i++)
 	{
-		printf("%s\n", map->data[i]);
+		printf("%s", map->data[i]);
 	}
 }
 
@@ -47,5 +47,5 @@ void	display_cub3d(t_cub3d *cub3d)
 	display_textures(&cub3d->textures);
 	display_colors(&cub3d->colors);
 	display_map(&cub3d->map);
-	printf("=============================\n");
+	printf("\n=============================\n");
 }
