@@ -5,6 +5,7 @@ CFLAGS = -Wall -Wextra -Werror -Iinclude -I./libft
 
 SRCS = src/main.c \
 		src/display/display_info.c \
+		src/game/game_play.c \
 		src/gnl/get_next_line.c src/gnl/get_next_line_utils.c \
 		src/init/init_data.c \
 		src/parse/parse_color_line.c src/parse/parse_cub_file.c src/parse/parse_map_line.c src/parse/parse_texture_line.c

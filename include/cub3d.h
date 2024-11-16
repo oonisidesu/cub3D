@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/14 17:56:49 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/11/14 17:57:27 by ootsuboyosh      ###   ########.fr       */
+/*   Created: 2024/11/16 17:30:03 by ootsuboyosh       #+#    #+#             */
+/*   Updated: 2024/11/16 17:30:04 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,24 @@ typedef struct s_map
 	int			height;
 }				t_map;
 
+// プレイヤー情報を保持する構造体
+typedef struct s_player
+{
+	double		x;
+	double		y;
+	double		dir_x;
+	double		dir_y;
+	double		plane_x;
+	double		plane_y;
+}				t_player;
+
 // 全体のゲームデータを保持するメイン構造体
 typedef struct s_cub3d
 {
 	t_texture	textures;
 	t_color		colors;
 	t_map		map;
+	t_player	player;
 }				t_cub3d;
 
 #endif
