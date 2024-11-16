@@ -6,7 +6,7 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 19:32:55 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/11/16 17:43:17 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/11/16 18:21:35 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,8 @@ int	main(int argc, char **argv)
 	parse_cub_file(argv[1], &game); // パース処理の呼び出し
 	// プレイヤーの位置と方向を設定
 	set_player_position(&game.map, &game.player);
-	// デバッグ表示: プレイヤーの位置と方向
-	printf("[DEBUG] Player position: x = %.1f, y = %.1f\n", game.player.x,
-		game.player.y);
-	printf("[DEBUG] Player direction: dir_x = %.1f, dir_y = %.1f\n",
-		game.player.dir_x, game.player.dir_y);
-	display_cub3d(&game);
+	// マップとプレイヤーの表示
+	display_map_with_player(&game.map, &game.player);
 	// TODO: パースされたデータを用いて描画処理やゲームロジックを開始する
 	// 正常終了
 	return (0);

@@ -4,7 +4,7 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror -Iinclude -I./libft
 
 SRCS = src/main.c \
-		src/display/display_info.c \
+		src/display/display_info.c src/display/display_player.c\
 		src/game/game_play.c \
 		src/gnl/get_next_line.c src/gnl/get_next_line_utils.c \
 		src/init/init_data.c \
