@@ -6,7 +6,7 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 14:34:31 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/11/16 18:41:41 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/11/19 17:02:28 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,12 @@
 # include <stdio.h>
 # include <stdlib.h>
 
-# define KEY_W 13
-# define KEY_A 0
-# define KEY_S 1
-# define KEY_D 2
-# define KEY_ESC 53
+// X11のキーコード
+# define KEY_W 119
+# define KEY_A 97
+# define KEY_S 115
+# define KEY_D 100
+# define KEY_ESC 65307
 
 // 移動方向を示すオフセット
 typedef struct s_offset

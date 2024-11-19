@@ -6,7 +6,7 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 18:26:54 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/11/16 18:46:28 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/11/19 16:57:39 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ int	handle_keypress(int keycode, t_game *game)
 	t_offset	offset;
 
 	// 構造体全体をゼロ初期化
+	printf("[DEBUG] Key pressed: %d\n", keycode);
 	ft_memset(&offset, 0, sizeof(t_offset));
 	if (keycode == KEY_W)
 		offset = (t_offset){0, -1}; // 上方向
