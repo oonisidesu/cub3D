@@ -6,7 +6,7 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 15:47:36 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/11/15 15:50:01 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/11/18 16:58:21 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,20 @@ void	init_game_data(t_cub3d *game)
 	game->map.data = NULL;
 	game->map.width = 0;
 	game->map.height = 0;
+}
+
+void	init_minilibx(t_game *game)
+{
+	game->mlx = mlx_init();
+	if (!game->mlx)
+	{
+		perror("Error initializing MinilibX");
+		exit(EXIT_FAILURE);
+	}
+	game->win = mlx_new_window(game->mlx, 800, 600, "cub3D");
+	if (!game->win)
+	{
+		perror("Error creating window");
+		exit(1);
+	}
 }

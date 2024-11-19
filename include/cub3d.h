@@ -6,13 +6,14 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 17:30:03 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/11/16 17:30:04 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/11/16 18:32:50 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
+# include "mlx.h"
 # include <stdio.h>
 # include <stdlib.h>
 
@@ -59,5 +60,13 @@ typedef struct s_cub3d
 	t_map		map;
 	t_player	player;
 }				t_cub3d;
+
+// MinilibX 関連情報を含むゲーム全体の構造体
+typedef struct s_game
+{
+	void		*mlx;
+	void		*win;
+	t_cub3d		game_data;
+}				t_game;
 
 #endif
