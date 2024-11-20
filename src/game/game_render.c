@@ -6,7 +6,7 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:33:27 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/11/20 17:26:48 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/11/20 17:57:01 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	render_scene(t_game *game)
 		// DDAアルゴリズムで壁を探索
 		perform_dda(game, &ray);
 		// 壁までの垂直距離を計算
-		calculate_wall_distance(&ray);
+		calculate_wall_distance(&ray, &game->game_data.player);
 		// 壁の高さを計算
 		line_height = (int)(WINDOW_HEIGHT / ray.perp_wall_dist);
 		// 壁の描画範囲を計算

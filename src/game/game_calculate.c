@@ -6,7 +6,7 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:32:08 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/11/20 17:06:39 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/11/20 17:54:01 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,14 @@ void	perform_dda(t_game *game, t_ray *ray)
 	}
 }
 
-void	calculate_wall_distance(t_ray *ray)
+void	calculate_wall_distance(t_ray *ray, t_player *player)
 {
 	if (ray->side == 0)
-		ray->perp_wall_dist = (ray->map_x - ray->camera_x + (1 - ray->step_x)
-				/ 2) / ray->ray_dir_x;
+		ray->perp_wall_dist = (ray->map_x - player->x + (1 - ray->step_x) / 2)
+			/ ray->ray_dir_x;
 	else
-		ray->perp_wall_dist = (ray->map_y - ray->camera_x + (1 - ray->step_y)
-				/ 2) / ray->ray_dir_y;
+		ray->perp_wall_dist = (ray->map_y - player->y + (1 - ray->step_y) / 2)
+			/ ray->ray_dir_y;
 }
 
 void	draw_vertical_line(t_game *game, int x, int start, int end, int color)

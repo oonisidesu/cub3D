@@ -6,7 +6,7 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 15:47:36 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/11/20 17:08:22 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/11/20 17:41:42 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,14 @@ void	initialize_ray(t_game *game, t_ray *ray, int x)
 	ray->map_x = (int)player->x;
 	ray->map_y = (int)player->y;
 	// delta_dist を計算 (レイがグリッドを横断するのにかかる距離)
-	ray->delta_dist_x = fabs(1 / ray->ray_dir_x);
-	ray->delta_dist_y = fabs(1 / ray->ray_dir_y);
+	if (fabs(ray->ray_dir_x) < 1e-6) // ゼロ除算回避
+		ray->delta_dist_x = INFINITY;
+	else
+		ray->delta_dist_x = fabs(1 / ray->ray_dir_x);
+	if (fabs(ray->ray_dir_y) < 1e-6) // ゼロ除算回避
+		ray->delta_dist_y = INFINITY;
+	else
+		ray->delta_dist_y = fabs(1 / ray->ray_dir_y);
 	// サイドディスタンスとステップ方向を初期化
 	if (ray->ray_dir_x < 0)
 	{
