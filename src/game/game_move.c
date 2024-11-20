@@ -6,7 +6,7 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 18:26:54 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/11/19 16:57:39 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/11/20 17:21:38 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int	handle_keypress(int keycode, t_game *game)
 	}
 	// 移動処理を呼び出し
 	move_player(&game->game_data.map, &game->game_data.player, offset);
-	// マップを再描画
-	display_map_with_player(&game->game_data.map, &game->game_data.player);
+	// 新しいシーンを描画
+	render_scene(game);
 	return (0);
 }

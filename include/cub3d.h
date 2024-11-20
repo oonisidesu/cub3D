@@ -6,7 +6,7 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 17:30:03 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/11/16 18:32:50 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/11/20 17:04:44 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@
 # include "mlx.h"
 # include <stdio.h>
 # include <stdlib.h>
+
+# define WINDOW_WIDTH 800
+# define WINDOW_HEIGHT 600
 
 // テクスチャ情報を保持する構造体
 typedef struct s_texture
@@ -52,6 +55,16 @@ typedef struct s_player
 	double		plane_y;
 }				t_player;
 
+// 画像データを保持する構造体
+typedef struct s_img
+{
+	void		*img;
+	char		*addr;
+	int			bits_per_pixel;
+	int			line_length;
+	int			endian;
+}				t_img;
+
 // 全体のゲームデータを保持するメイン構造体
 typedef struct s_cub3d
 {
@@ -66,6 +79,7 @@ typedef struct s_game
 {
 	void		*mlx;
 	void		*win;
+	t_img		img;
 	t_cub3d		game_data;
 }				t_game;
 
