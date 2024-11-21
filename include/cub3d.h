@@ -6,23 +6,40 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 17:30:03 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/11/16 17:30:04 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/11/20 18:36:13 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
+# include "mlx.h"
 # include <stdio.h>
 # include <stdlib.h>
 
-// テクスチャ情報を保持する構造体
+# define WINDOW_WIDTH 800
+# define WINDOW_HEIGHT 600
+
+// テクスチャ情報を保持する構造体（修正版）
+typedef struct s_img
+{
+	void		*img;
+	char		*addr;
+	int			bits_per_pixel;
+	int			line_length;
+	int			endian;
+	int			width;
+	int			height;
+}				t_img;
+
 typedef struct s_texture
 {
-	char		*north;
-	char		*south;
-	char		*west;
-	char		*east;
+	t_img		north;
+	t_img		south;
+	t_img		west;
+	t_img		east;
+	t_img		floor;
+	t_img		ceiling;
 }				t_texture;
 
 // 床と天井の色を保持する構造体
@@ -59,5 +76,14 @@ typedef struct s_cub3d
 	t_map		map;
 	t_player	player;
 }				t_cub3d;
+
+// MinilibX 関連情報を含むゲーム全体の構造体
+typedef struct s_game
+{
+	void		*mlx;
+	void		*win;
+	t_img		img;
+	t_cub3d		game_data;
+}				t_game;
 
 #endif

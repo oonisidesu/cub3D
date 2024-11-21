@@ -6,7 +6,7 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 17:24:20 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/11/16 17:47:43 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/11/20 17:39:44 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,26 +29,34 @@ void	set_player_position(t_map *map, t_player *player)
 				// プレイヤーの初期位置を設定
 				player->x = j + 0.5; // 中央に設定
 				player->y = i + 0.5;
-				// プレイヤーの方向を設定
+				// プレイヤーの方向と視野平面を設定
 				if (c == 'N')
 				{
 					player->dir_x = 0;
 					player->dir_y = -1;
+					player->plane_x = 0.66;
+					player->plane_y = 0;
 				}
 				else if (c == 'S')
 				{
 					player->dir_x = 0;
 					player->dir_y = 1;
+					player->plane_x = -0.66;
+					player->plane_y = 0;
 				}
 				else if (c == 'E')
 				{
 					player->dir_x = 1;
 					player->dir_y = 0;
+					player->plane_x = 0;
+					player->plane_y = 0.66;
 				}
 				else if (c == 'W')
 				{
 					player->dir_x = -1;
 					player->dir_y = 0;
+					player->plane_x = 0;
+					player->plane_y = -0.66;
 				}
 				// 開始位置を空白に変更
 				map->data[i][j] = '0';

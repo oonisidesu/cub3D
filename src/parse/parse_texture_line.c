@@ -6,7 +6,7 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 13:50:25 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/11/15 15:51:23 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/11/21 16:38:45 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,25 @@
 void	parse_texture_line(const char *line, t_texture *textures)
 {
 	if (ft_strncmp(line, "NO ", 3) == 0)
-		textures->north = ft_strdup(line + 3);
+	{
+		textures->north.img = ft_strdup(line + 3); // テクスチャパスを保存
+	}
 	else if (ft_strncmp(line, "SO ", 3) == 0)
-		textures->south = ft_strdup(line + 3);
+	{
+		textures->south.img = ft_strdup(line + 3); // テクスチャパスを保存
+	}
 	else if (ft_strncmp(line, "WE ", 3) == 0)
-		textures->west = ft_strdup(line + 3);
+	{
+		textures->west.img = ft_strdup(line + 3); // テクスチャパスを保存
+	}
 	else if (ft_strncmp(line, "EA ", 3) == 0)
-		textures->east = ft_strdup(line + 3);
+	{
+		textures->east.img = ft_strdup(line + 3); // テクスチャパスを保存
+	}
+	else
+	{
+		fprintf(stderr, "Error: Unknown texture identifier in line: %s\n",
+			line);
+		exit(EXIT_FAILURE);
+	}
 }

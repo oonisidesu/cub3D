@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.h                                             :+:      :+:    :+:   */
+/*   util_image.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/15 15:48:46 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/11/21 16:31:29 by ootsuboyosh      ###   ########.fr       */
+/*   Created: 2024/11/20 16:46:31 by ootsuboyosh       #+#    #+#             */
+/*   Updated: 2024/11/21 15:14:16 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef INIT_H
-# define INIT_H
+#include "include/util.h"
 
-# include "cub3d.h"
-# include <stdio.h>
-# include <stdlib.h>
+void	put_pixel_to_image(t_game *game, int x, int y, int color)
+{
+	char	*dst;
 
-void	init_game_data(t_cub3d *game);
-void	init_minilibx(t_game *game);
-void	init_textures(t_game *game);
-
-#endif
+	dst = game->img.addr + (y * game->img.line_length + x
+			* (game->img.bits_per_pixel / 8));
+	*(unsigned int *)dst = color;
+}
