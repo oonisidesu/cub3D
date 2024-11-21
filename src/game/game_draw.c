@@ -6,7 +6,7 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 16:14:17 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/11/21 16:26:52 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/11/21 17:08:09 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 #include "util.h"
 #include <math.h>
 
-void	draw_wall(t_game *game, t_ray *ray, int x, int draw_start,
-		int draw_end)
+void	draw_wall(t_game *game, t_ray *ray, int x, int draw_start, int draw_end)
 {
 	t_img	*texture;
 	int		color;
@@ -53,35 +52,23 @@ void	draw_wall(t_game *game, t_ray *ray, int x, int draw_start,
 
 void	draw_floor_and_ceiling(t_game *game)
 {
-	t_img	*floor_texture;
-	t_img	*ceiling_texture;
-	int		color;
+	int	floor_color;
+	int	ceiling_color;
 
-	floor_texture = &game->game_data.textures.floor;
-	ceiling_texture = &game->game_data.textures.ceiling;
-	for (int y = 0; y < WINDOW_HEIGHT / 2; y++)
+	int x, y;
+	// 色をRGB値から計算
+	floor_color = (game->game_data.colors.floor[0] << 16) | (game->game_data.colors.floor[1] << 8) | (game->game_data.colors.floor[2]);
+	ceiling_color = (game->game_data.colors.ceiling[0] << 16) | (game->game_data.colors.ceiling[1] << 8) | (game->game_data.colors.ceiling[2]);
+	// 天井を描画
+	for (y = 0; y < WINDOW_HEIGHT / 2; y++)
 	{
-		for (int x = 0; x < WINDOW_WIDTH; x++)
-		{
-			// 天井の色
-			color = *(int *)(ceiling_texture->addr + ((y
-							% ceiling_texture->height)
-						* ceiling_texture->line_length + (x
-							% ceiling_texture->width)
-						* (ceiling_texture->bits_per_pixel / 8)));
-			put_pixel_to_image(game, x, y, color);
-		}
+		for (x = 0; x < WINDOW_WIDTH; x++)
+			put_pixel_to_image(game, x, y, ceiling_color);
 	}
-	for (int y = WINDOW_HEIGHT / 2; y < WINDOW_HEIGHT; y++)
+	// 床を描画
+	for (y = WINDOW_HEIGHT / 2; y < WINDOW_HEIGHT; y++)
 	{
-		for (int x = 0; x < WINDOW_WIDTH; x++)
-		{
-			// 床の色
-			color = *(int *)(floor_texture->addr + ((y % floor_texture->height)
-						* floor_texture->line_length + (x
-							% floor_texture->width)
-						* (floor_texture->bits_per_pixel / 8)));
-			put_pixel_to_image(game, x, y, color);
-		}
+		for (x = 0; x < WINDOW_WIDTH; x++)
+			put_pixel_to_image(game, x, y, floor_color);
 	}
 }
