@@ -6,7 +6,7 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 17:30:03 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/11/20 18:36:13 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/11/21 17:55:29 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,10 @@ typedef struct s_img
 
 typedef struct s_texture
 {
+	char		*c_north;
+	char		*c_south;
+	char		*c_west;
+	char		*c_east;
 	t_img		north;
 	t_img		south;
 	t_img		west;

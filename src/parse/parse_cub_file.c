@@ -6,7 +6,7 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 13:48:34 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/11/15 18:29:25 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/11/21 18:11:31 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ void	parse_cub_file(const char *filename, t_cub3d *game)
 	}
 	while ((line = get_next_line(fd)) != NULL)
 	{
+		// lineから改行を取り除く
+		line = ft_strtrim(line, "\n");
 		if (ft_strncmp(line, "NO ", 3) == 0 || ft_strncmp(line, "SO ", 3) == 0
 			|| ft_strncmp(line, "WE ", 3) == 0 || ft_strncmp(line, "EA ",
 				3) == 0)

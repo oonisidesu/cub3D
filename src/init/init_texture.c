@@ -6,7 +6,7 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 15:15:45 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/11/21 16:43:37 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/11/21 17:59:11 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,12 @@
 
 void	init_textures(t_game *game)
 {
-	load_texture(game, &game->game_data.textures.north, "texture/wood.xpm");
-	load_texture(game, &game->game_data.textures.south, "texture/brick.xpm");
-	load_texture(game, &game->game_data.textures.west, "texture/concrete.xpm");
-	load_texture(game, &game->game_data.textures.east, "texture/twinkle.xpm");
-	load_texture(game, &game->game_data.textures.floor, "texture/ground.xpm");
-	load_texture(game, &game->game_data.textures.ceiling, "texture/sky.xpm");
+	load_texture(game, &game->game_data.textures.north,
+		game->game_data.textures.c_north);
+	load_texture(game, &game->game_data.textures.south,
+		game->game_data.textures.c_south);
+	load_texture(game, &game->game_data.textures.west,
+		game->game_data.textures.c_west);
+	load_texture(game, &game->game_data.textures.east,
+		game->game_data.textures.c_east);
 }
