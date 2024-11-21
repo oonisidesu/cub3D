@@ -6,7 +6,7 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 15:47:36 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/11/20 17:41:42 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/11/21 16:36:46 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,6 @@
 
 void	init_game_data(t_cub3d *game)
 {
-	game->textures.north = NULL;
-	game->textures.south = NULL;
-	game->textures.west = NULL;
-	game->textures.east = NULL;
 	game->colors.floor[0] = 0;
 	game->colors.floor[1] = 0;
 	game->colors.floor[2] = 0;
@@ -64,7 +60,7 @@ void	init_minilibx(t_game *game)
 	}
 }
 
-void	initialize_ray(t_game *game, t_ray *ray, int x)
+void	init_ray(t_game *game, t_ray *ray, int x)
 {
 	t_player	*player;
 

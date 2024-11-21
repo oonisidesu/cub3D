@@ -6,7 +6,7 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 14:56:47 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/11/16 18:19:07 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/11/21 16:24:53 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,12 @@
 // テクスチャ情報を表示する関数
 void	display_textures(t_texture *textures)
 {
-	printf("North Texture: %s", textures->north);
-	printf("South Texture: %s", textures->south);
-	printf("West Texture: %s", textures->west);
-	printf("East Texture: %s", textures->east);
+	printf("North Texture: %p\n", (void *)textures->north.img);
+	printf("South Texture: %p\n", (void *)textures->south.img);
+	printf("West Texture: %p\n", (void *)textures->west.img);
+	printf("East Texture: %p\n", (void *)textures->east.img);
+	printf("Floor Texture: %p\n", (void *)textures->floor.img);
+	printf("Ceiling Texture: %p\n", (void *)textures->ceiling.img);
 }
 
 // カラー情報を表示する関数

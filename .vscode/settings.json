@@ -2,6 +2,7 @@
     "files.associations": {
         "parse.h": "c",
         "game.h": "c",
-        "cub3d.h": "c"
+        "cub3d.h": "c",
+        "util.h": "c"
     }
 }

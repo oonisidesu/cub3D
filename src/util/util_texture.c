@@ -1,22 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   util_image.c                                       :+:      :+:    :+:   */
+/*   util_texture.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/20 16:46:31 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/11/21 15:14:16 by ootsuboyosh      ###   ########.fr       */
+/*   Created: 2024/11/21 15:12:19 by ootsuboyosh       #+#    #+#             */
+/*   Updated: 2024/11/21 15:14:34 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/util.h"
 
-void	put_pixel_to_image(t_game *game, int x, int y, int color)
+void	load_texture(t_game *game, t_img *texture, char *path)
 {
-	char	*dst;
-
-	dst = game->img.addr + (y * game->img.line_length + x
-			* (game->img.bits_per_pixel / 8));
-	*(unsigned int *)dst = color;
+	texture->img = mlx_xpm_file_to_image(game->mlx, path, &texture->width,
+			&texture->height);
+	if (!texture->img)
+	{
+		fprintf(stderr, "Error: Failed to load texture: %s\n", path);
+		exit(EXIT_FAILURE);
+	}
+	texture->addr = mlx_get_data_addr(texture->img, &texture->bits_per_pixel,
+			&texture->line_length, &texture->endian);
 }

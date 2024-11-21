@@ -6,7 +6,7 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:38:01 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/11/20 16:38:02 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/11/21 16:36:36 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ int	main(int argc, char **argv)
 		display_usage_and_exit(argv[0]);
 	// MinilibX の初期化
 	init_minilibx(&game);
+	// テクスチャの初期化
+	init_textures(&game);
 	// ゲームデータの初期化とマップの読み込み
 	init_game_data(&game.game_data);
 	parse_cub_file(argv[1], &game.game_data);

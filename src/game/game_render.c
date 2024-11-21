@@ -6,7 +6,7 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:33:27 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/11/20 17:57:01 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/11/21 16:31:56 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,19 +21,14 @@ void	render_scene(t_game *game)
 	int		line_height;
 	int		draw_start;
 	int		draw_end;
-	int		color;
 
-	// ウィンドウ全体を背景色で塗りつぶす (例: 黒色)
-	for (int y = 0; y < WINDOW_HEIGHT; y++)
-	{
-		for (int x = 0; x < WINDOW_WIDTH; x++)
-			put_pixel_to_image(game, x, y, 0x000000); // 黒で塗りつぶし
-	}
+	// 天井と床を描画
+	draw_floor_and_ceiling(game);
 	x = 0;
 	while (x < WINDOW_WIDTH)
 	{
 		// レイの初期化
-		initialize_ray(game, &ray, x);
+		init_ray(game, &ray, x);
 		// DDAアルゴリズムで壁を探索
 		perform_dda(game, &ray);
 		// 壁までの垂直距離を計算
@@ -47,9 +42,8 @@ void	render_scene(t_game *game)
 		draw_end = line_height / 2 + WINDOW_HEIGHT / 2;
 		if (draw_end >= WINDOW_HEIGHT)
 			draw_end = WINDOW_HEIGHT - 1;
-		// 壁を描画（暫定的に色を設定: x方向は青、y方向は赤）
-		color = (ray.side == 0) ? 0x0000FF : 0xFF0000;
-		draw_vertical_line(game, x, draw_start, draw_end, color);
+		// 壁をテクスチャで描画
+		draw_wall(game, &ray, x, draw_start, draw_end);
 		x++;
 	}
 	// 描画した画像をウィンドウに表示

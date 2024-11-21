@@ -6,7 +6,7 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 17:34:44 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/11/20 17:57:58 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/11/21 16:32:07 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ typedef struct s_ray
 	int		side;
 }			t_ray;
 
-void		initialize_ray(t_game *game, t_ray *ray, int x);
+void		init_ray(t_game *game, t_ray *ray, int x);
 void		perform_dda(t_game *game, t_ray *ray);
 void		calculate_wall_distance(t_ray *ray, t_player *player);
 

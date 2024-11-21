@@ -6,7 +6,7 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 15:48:46 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/11/19 17:49:51 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/11/21 16:31:29 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,6 @@
 
 void	init_game_data(t_cub3d *game);
 void	init_minilibx(t_game *game);
+void	init_textures(t_game *game);
 
 #endif
