@@ -6,7 +6,7 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:38:01 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/11/21 18:00:07 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/11/21 18:37:26 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ int	main(int argc, char **argv)
 	mlx_loop_hook(game.mlx, main_loop, &game);
 	// キーボード入力イベントフック
 	mlx_hook(game.win, 2, 1L << 0, handle_keypress, &game);
+	// ウィンドウの「×」ボタンを押したときの終了イベントフック
+	mlx_hook(game.win, 17, 0, (int (*)())exit_program, &game);
 	// イベントループ
 	mlx_loop(game.mlx);
 	return (0);
