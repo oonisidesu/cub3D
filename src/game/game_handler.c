@@ -6,7 +6,7 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 18:34:21 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/11/21 18:48:15 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/11/22 17:58:52 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,21 +25,30 @@ int	handle_keypress(int keycode, t_game *game)
 	// 構造体全体をゼロ初期化
 	printf("[DEBUG] Key pressed: %d\n", keycode);
 	ft_memset(&offset, 0, sizeof(t_offset));
+	// 前進・後退の処理
 	if (keycode == KEY_W)
-		offset = (t_offset){0, -1}; // 上方向
-	else if (keycode == KEY_S)
-		offset = (t_offset){0, 1}; // 下方向
-	else if (keycode == KEY_A)
-		offset = (t_offset){-1, 0}; // 左方向
-	else if (keycode == KEY_D)
-		offset = (t_offset){1, 0}; // 右方向
-	else if (keycode == KEY_ESC)
 	{
-		printf("Exiting game.\n");
-		mlx_destroy_window(game->mlx, game->win);
-		exit(0);
+		game->game_data.player.x += game->game_data.player.dir_x * MOVE_SPEED;
+		game->game_data.player.y += game->game_data.player.dir_y * MOVE_SPEED;
 	}
-	else if (keycode == KEY_LEFT) // 左矢印キーで左回転
+	else if (keycode == KEY_S)
+	{
+		game->game_data.player.x -= game->game_data.player.dir_x * MOVE_SPEED;
+		game->game_data.player.y -= game->game_data.player.dir_y * MOVE_SPEED;
+	}
+	// 左右移動（ストレイフ）の処理
+	else if (keycode == KEY_A)
+	{
+		game->game_data.player.x -= game->game_data.player.plane_x * MOVE_SPEED;
+		game->game_data.player.y -= game->game_data.player.plane_y * MOVE_SPEED;
+	}
+	else if (keycode == KEY_D)
+	{
+		game->game_data.player.x += game->game_data.player.plane_x * MOVE_SPEED;
+		game->game_data.player.y += game->game_data.player.plane_y * MOVE_SPEED;
+	}
+	// 左右回転の処理
+	else if (keycode == KEY_LEFT) // 左回転
 	{
 		old_dir_x = player->dir_x;
 		player->dir_x = player->dir_x * cos(-ROT_SPEED) - player->dir_y
@@ -52,7 +61,7 @@ int	handle_keypress(int keycode, t_game *game)
 		player->plane_y = old_plane_x * sin(-ROT_SPEED) + player->plane_y
 			* cos(-ROT_SPEED);
 	}
-	else if (keycode == KEY_RIGHT) // 右矢印キーで右回転
+	else if (keycode == KEY_RIGHT) // 右回転
 	{
 		old_dir_x = player->dir_x;
 		player->dir_x = player->dir_x * cos(ROT_SPEED) - player->dir_y
@@ -65,7 +74,14 @@ int	handle_keypress(int keycode, t_game *game)
 		player->plane_y = old_plane_x * sin(ROT_SPEED) + player->plane_y
 			* cos(ROT_SPEED);
 	}
-	// 移動処理を呼び出し
+	// ESCキーで終了
+	else if (keycode == KEY_ESC)
+	{
+		printf("Exiting game.\n");
+		mlx_destroy_window(game->mlx, game->win);
+		exit(0);
+	}
+	// 壁衝突判定（move_player関数を呼び出して処理）
 	move_player(&game->game_data.map, &game->game_data.player, offset);
 	// 新しいシーンを描画
 	render_scene(game);
