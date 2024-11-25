@@ -6,7 +6,7 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 18:34:21 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/11/22 17:58:52 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/11/25 18:40:10 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,24 +28,28 @@ int	handle_keypress(int keycode, t_game *game)
 	// 前進・後退の処理
 	if (keycode == KEY_W)
 	{
-		game->game_data.player.x += game->game_data.player.dir_x * MOVE_SPEED;
-		game->game_data.player.y += game->game_data.player.dir_y * MOVE_SPEED;
+		offset.dx = player->dir_x * MOVE_SPEED;
+		offset.dy = player->dir_y * MOVE_SPEED;
 	}
 	else if (keycode == KEY_S)
 	{
-		game->game_data.player.x -= game->game_data.player.dir_x * MOVE_SPEED;
-		game->game_data.player.y -= game->game_data.player.dir_y * MOVE_SPEED;
+		offset.dx = -player->dir_x * MOVE_SPEED;
+		offset.dy = -player->dir_y * MOVE_SPEED;
 	}
 	// 左右移動（ストレイフ）の処理
 	else if (keycode == KEY_A)
 	{
-		game->game_data.player.x -= game->game_data.player.plane_x * MOVE_SPEED;
-		game->game_data.player.y -= game->game_data.player.plane_y * MOVE_SPEED;
+		printf("player->plane_x : %f, player->plane_y : %f\n", player->plane_x,
+			player->plane_y);
+		offset.dx = -player->plane_x * MOVE_SPEED;
+		offset.dy = -player->plane_y * MOVE_SPEED;
+		printf("[DEBUG] Calculated Offset: dx = %.2f, dy = %.2f\n", offset.dx,
+			offset.dy);
 	}
 	else if (keycode == KEY_D)
 	{
-		game->game_data.player.x += game->game_data.player.plane_x * MOVE_SPEED;
-		game->game_data.player.y += game->game_data.player.plane_y * MOVE_SPEED;
+		offset.dx = player->plane_x * MOVE_SPEED;
+		offset.dy = player->plane_y * MOVE_SPEED;
 	}
 	// 左右回転の処理
 	else if (keycode == KEY_LEFT) // 左回転
@@ -81,8 +85,10 @@ int	handle_keypress(int keycode, t_game *game)
 		mlx_destroy_window(game->mlx, game->win);
 		exit(0);
 	}
-	// 壁衝突判定（move_player関数を呼び出して処理）
-	move_player(&game->game_data.map, &game->game_data.player, offset);
+	printf("[DEBUG] Offset: dx = %f, dy = %f\n", offset.dx, offset.dy);
+	// 壁衝突判定と移動処理
+	if (offset.dx != 0 || offset.dy != 0)
+		move_player(&game->game_data.map, &game->game_data.player, offset);
 	// 新しいシーンを描画
 	render_scene(game);
 	return (0);
