@@ -6,36 +6,32 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 13:50:22 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/11/15 15:50:50 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/11/28 15:01:40 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "parse.h"
 
-// 色を解析する関数
 int	parse_color_line(const char *line, int color[3])
 {
-	for (int i = 0; i < 3; i++)
+	int	color_index;
+
+	color_index = 0;
+	while (color_index < 3)
 	{
-		color[i] = ft_atoi_long(line);
-		if (color[i] < 0 || color[i] > 255)
-		{
-			return (0); // エラー: 範囲外の値
-		}
-		// 数字部分をスキップ
+		color[color_index] = ft_atoi_long(line);
+		if (color[color_index] < 0 || color[color_index] > 255)
+			return (0);
 		while (*line >= '0' && *line <= '9')
+			line++;
+		if (color_index < 2)
 		{
+			if (*line != ',')
+				return (0);
 			line++;
 		}
-		if (i < 2)
-		{ // カンマチェック
-			if (*line != ',')
-			{
-				return (0); // エラー: カンマが不足
-			}
-			line++; // カンマをスキップ
-		}
+		color_index++;
 	}
-	return (1); // 成功
+	return (1);
 }

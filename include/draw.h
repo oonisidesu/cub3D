@@ -1,23 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   util.h                                             :+:      :+:    :+:   */
+/*   draw.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/20 16:50:31 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/11/28 15:56:29 by ootsuboyosh      ###   ########.fr       */
+/*   Created: 2024/11/28 16:12:04 by ootsuboyosh       #+#    #+#             */
+/*   Updated: 2024/11/28 16:27:47 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UTIL_H
-# define UTIL_H
+#ifndef DRAW_H
+# define DRAW_H
 
 # include "cub3d.h"
+# include "libft.h"
+# include "ray.h"
 
-void	put_pixel_to_image(t_game *game, int x, int y, int color);
-void	load_texture(t_game *game, t_img *texture, char *path);
-char	**resize_array(char **old_array, int old_size, int new_size);
-void	display_usage_and_exit(const char *program_name);
+typedef struct s_wall_params
+{
+	int		draw_start;
+	int		draw_end;
+	int		line_height;
+	int		x;
+}			t_wall_params;
+
+typedef struct s_draw_params
+{
+	t_img	*texture;
+	int		tex_x;
+	double	step;
+	double	tex_pos;
+}			t_draw_params;
+
+void		draw_wall(t_game *game, t_ray *ray, t_wall_params *params);
+void		draw_floor_and_ceiling(t_game *game);
 
 #endif

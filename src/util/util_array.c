@@ -1,28 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_data.c                                        :+:      :+:    :+:   */
+/*   util_array.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/15 15:47:36 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/11/28 14:16:24 by ootsuboyosh      ###   ########.fr       */
+/*   Created: 2024/11/28 14:52:15 by ootsuboyosh       #+#    #+#             */
+/*   Updated: 2024/11/28 15:02:35 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "init.h"
-#include "ray.h"
-#include <math.h>
+#include "include/util.h"
 
-void	init_game_data(t_cub3d *game)
+// 配列を拡張する関数
+char	**resize_array(char **old_array, int old_size, int new_size)
 {
-	game->colors.floor[0] = 0;
-	game->colors.floor[1] = 0;
-	game->colors.floor[2] = 0;
-	game->colors.ceiling[0] = 0;
-	game->colors.ceiling[1] = 0;
-	game->colors.ceiling[2] = 0;
-	game->map.data = NULL;
-	game->map.width = 0;
-	game->map.height = 0;
+	char	**new_array;
+	int		i;
+
+	new_array = malloc(sizeof(char *) * new_size);
+	if (!new_array)
+	{
+		perror("Error allocating memory for new array");
+		exit(EXIT_FAILURE);
+	}
+	i = 0;
+	while (i < old_size)
+	{
+		new_array[i] = old_array[i];
+		i++;
+	}
+	free(old_array);
+	return (new_array);
 }
