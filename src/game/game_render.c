@@ -6,7 +6,7 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:33:27 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/11/21 16:31:56 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/11/28 15:54:22 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,10 @@ void	render_scene(t_game *game)
 	}
 	// 描画した画像をウィンドウに表示
 	mlx_put_image_to_window(game->mlx, game->win, game->img.img, 0, 0);
+}
+
+int	handle_loop(t_game *game)
+{
+	render_scene(game);
+	return (0);
 }
