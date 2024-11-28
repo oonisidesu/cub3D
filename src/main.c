@@ -6,7 +6,7 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:38:01 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/11/21 18:37:26 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/11/28 14:04:47 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,7 @@ int	main(int argc, char **argv)
 	// 引数チェック
 	if (argc != 2)
 		display_usage_and_exit(argv[0]);
-	// MinilibX の初期化
-	init_minilibx(&game);
+	init_mlx(&game);
 	// ゲームデータの初期化とマップの読み込み
 	init_game_data(&game.game_data);
 	parse_cub_file(argv[1], &game.game_data);
