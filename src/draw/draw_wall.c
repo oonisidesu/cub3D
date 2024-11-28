@@ -1,20 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   game_draw.c                                        :+:      :+:    :+:   */
+/*   draw_wall.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 16:14:17 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/11/21 17:08:09 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/11/28 16:19:08 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game.h"
+#include "draw.h"
 #include "util.h"
 #include <math.h>
 
-void	draw_wall(t_game *game, t_ray *ray, int x, int draw_start, int draw_end)
+void	draw_wall(t_game *game, t_ray *ray, t_wall_params *params)
 {
 	t_img	*texture;
 	int		color;
@@ -36,39 +37,16 @@ void	draw_wall(t_game *game, t_ray *ray, int x, int draw_start, int draw_end)
 			&& ray->ray_dir_y < 0))
 		tex_x = texture->width - tex_x - 1;
 	// テクスチャの縦方向ステップ
-	step = 1.0 * texture->height / (draw_end - draw_start);
-	tex_pos = (draw_start - WINDOW_HEIGHT / 2 + (draw_end - draw_start) / 2)
+	step = 1.0 * texture->height / params->line_height;
+	tex_pos = (params->draw_start - WINDOW_HEIGHT / 2 + params->line_height / 2)
 		* step;
-	// 壁を垂直線で描画
-	for (int y = draw_start; y < draw_end; y++)
+	// 壁を描画
+	for (int y = params->draw_start; y < params->draw_end; y++)
 	{
 		tex_y = (int)tex_pos & (texture->height - 1);
 		tex_pos += step;
 		color = *(int *)(texture->addr + (tex_y * texture->line_length + tex_x
 					* (texture->bits_per_pixel / 8)));
-		put_pixel_to_image(game, x, y, color);
-	}
-}
-
-void	draw_floor_and_ceiling(t_game *game)
-{
-	int	floor_color;
-	int	ceiling_color;
-
-	int x, y;
-	// 色をRGB値から計算
-	floor_color = (game->game_data.colors.floor[0] << 16) | (game->game_data.colors.floor[1] << 8) | (game->game_data.colors.floor[2]);
-	ceiling_color = (game->game_data.colors.ceiling[0] << 16) | (game->game_data.colors.ceiling[1] << 8) | (game->game_data.colors.ceiling[2]);
-	// 天井を描画
-	for (y = 0; y < WINDOW_HEIGHT / 2; y++)
-	{
-		for (x = 0; x < WINDOW_WIDTH; x++)
-			put_pixel_to_image(game, x, y, ceiling_color);
-	}
-	// 床を描画
-	for (y = WINDOW_HEIGHT / 2; y < WINDOW_HEIGHT; y++)
-	{
-		for (x = 0; x < WINDOW_WIDTH; x++)
-			put_pixel_to_image(game, x, y, floor_color);
+		put_pixel_to_image(game, params->x, y, color);
 	}
 }

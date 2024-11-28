@@ -5,12 +5,12 @@ CFLAGS = -Wall -Wextra -Werror -Iinclude -I./libft -I./minilibx
 
 SRCS = src/main.c \
        src/display/display_info.c src/display/display_player.c \
-       src/game/game_calculate.c src/game/game_draw.c src/game/game_handler.c src/game/game_move.c src/game/game_play.c src/game/game_render.c \
+       src/draw/draw_floor_ceiling.c src/draw/draw_wall.c \
+       src/game/game_calculate.c src/game/game_handler.c src/game/game_move.c src/game/game_play.c src/game/game_render.c \
        src/gnl/get_next_line.c src/gnl/get_next_line_utils.c \
        src/init/init_data.c src/init/init_mlx.c src/init/init_ray.c src/init/init_texture.c \
        src/parse/parse_color_line.c src/parse/parse_cub_file.c src/parse/parse_map_line.c src/parse/parse_texture_line.c \
        src/util/util_array.c src/util/util_error.c src/util/util_image.c src/util/util_texture.c
-
 
 OBJ_DIR = obj
 OBJS = $(SRCS:src/%.c=$(OBJ_DIR)/%.o)
