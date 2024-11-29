@@ -6,7 +6,7 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:38:01 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/11/28 15:57:34 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/11/29 17:02:28 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,9 @@ int	main(int argc, char **argv)
 {
 	t_game	game;
 
-	if (argc != 2)
-		display_usage_and_exit(argv[0]);
-	init_mlx(&game);
-	init_game_data(&game.game_data);
+	if (validate_args(argc, argv) == ERROR)
+		print_error_exit("Invalid arguments");
+	init_game(&game);
 	parse_cub_file(argv[1], &game.game_data);
 	init_textures(&game);
 	set_player_position(&game.game_data.map, &game.game_data.player);

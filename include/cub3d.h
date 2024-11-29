@@ -6,7 +6,7 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 17:30:03 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/11/21 17:55:29 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/11/29 17:04:10 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,11 @@
 # include <stdio.h>
 # include <stdlib.h>
 
+# define WINDOW_TITLE "cub3D"
 # define WINDOW_WIDTH 800
 # define WINDOW_HEIGHT 600
+# define SUCCESS 0
+# define ERROR 1
 
 // テクスチャ情報を保持する構造体（修正版）
 typedef struct s_img

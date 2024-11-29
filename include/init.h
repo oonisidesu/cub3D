@@ -6,7 +6,7 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 15:48:46 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/11/28 17:05:56 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/11/29 17:02:41 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 
+void	init_game(t_game *game);
 void	init_game_data(t_cub3d *game);
 void	init_mlx(t_game *game);
 void	init_textures(t_game *game);
