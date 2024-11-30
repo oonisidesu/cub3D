@@ -6,7 +6,7 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 15:55:25 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/11/29 17:20:41 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/11/30 16:21:44 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,6 @@ void	print_error_free(const char *message, t_game *game)
 
 void	print_error_free_exit(const char *message, t_game *game)
 {
-	print_error(message);
+	print_error_free(message, game);
 	exit(EXIT_FAILURE);
 }
