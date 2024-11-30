@@ -6,7 +6,7 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 13:48:34 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/11/30 16:21:07 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/11/30 17:09:26 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "libft.h"
 #include "parse.h"
 #include "util.h"
+#include "validate.h"
 #include <fcntl.h>
 
 int	open_cub_file(const char *filename, t_game *game)
@@ -70,17 +71,21 @@ void	parse_cub_file(const char *filename, t_game *game)
 {
 	int		fd;
 	char	*line;
+	char	*trimmed_line;
 
 	fd = open_cub_file(filename, game);
 	line = get_next_line(fd);
 	while (line != NULL)
 	{
-		// if (!validate_and_save_line(line, game))
-		// {
-		// 	free(line);
-		// 	close(fd);
-		// 	print_error_free_exit("Invalid line in .cub file\n", game);
-		// }
+		trimmed_line = ft_strtrim(line, "\n");
+		free(line);
+		line = trimmed_line;
+		if (!validate_and_save_line(line, game))
+		{
+			free(line);
+			close(fd);
+			print_error_free_exit("Invalid line in .cub file\n", game);
+		}
 		process_cub_line(line, game);
 		free(line);
 		line = get_next_line(fd);
