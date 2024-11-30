@@ -6,7 +6,7 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 13:48:34 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/11/30 17:09:26 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/11/30 18:04:30 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,6 @@ void	parse_cub_file(const char *filename, t_game *game)
 		line = get_next_line(fd);
 	}
 	close(fd);
-	// if (!validate_map(game->game_data.map))
-	// 	print_error_free_exit("Invalid map\n", game);
+	if (!validate_map(&game->game_data.map))
+		print_error_free_exit("Invalid map\n", game);
 }
