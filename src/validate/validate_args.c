@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.h                                             :+:      :+:    :+:   */
+/*   validate_args.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/15 15:48:46 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/11/29 17:02:41 by ootsuboyosh      ###   ########.fr       */
+/*   Created: 2024/11/28 17:59:04 by ootsuboyosh       #+#    #+#             */
+/*   Updated: 2024/11/30 16:24:00 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef INIT_H
-# define INIT_H
+#include "libft.h"
+#include "validate.h"
 
-# include "cub3d.h"
-# include "draw.h"
-# include <stdio.h>
-# include <stdlib.h>
-
-void	init_game(t_game *game);
-void	init_game_data(t_cub3d *game);
-void	init_mlx(t_game *game);
-void	init_textures(t_game *game);
-void	init_wall_params(t_wall_params *wall_params, t_ray *ray);
-
-#endif
+int	validate_args(int argc, char **argv)
+{
+	if (argc != 2)
+		return (ERROR);
+	if (ft_strncmp(argv[1] + ft_strlen(argv[1]) - 4, ".cub", 4) != 0)
+		return (ERROR);
+	return (SUCCESS);
+}

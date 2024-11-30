@@ -6,7 +6,7 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:50:31 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/11/28 15:56:29 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/11/29 17:21:35 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,10 @@ void	put_pixel_to_image(t_game *game, int x, int y, int color);
 void	load_texture(t_game *game, t_img *texture, char *path);
 char	**resize_array(char **old_array, int old_size, int new_size);
 void	display_usage_and_exit(const char *program_name);
+void	print_error(const char *message);
+void	print_error_exit(const char *message);
+void	print_error_free(const char *message, t_game *game);
+void	print_error_free_exit(const char *message, t_game *game);
+void	free_game(t_game *game);
 
 #endif

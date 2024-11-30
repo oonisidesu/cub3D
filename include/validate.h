@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.h                                             :+:      :+:    :+:   */
+/*   validate.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/15 15:48:46 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/11/29 17:02:41 by ootsuboyosh      ###   ########.fr       */
+/*   Created: 2024/11/28 18:13:53 by ootsuboyosh       #+#    #+#             */
+/*   Updated: 2024/11/30 18:02:28 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef INIT_H
-# define INIT_H
+#ifndef VALIDATE_H
+# define VALIDATE_H
 
 # include "cub3d.h"
-# include "draw.h"
+# include <stdbool.h>
 # include <stdio.h>
 # include <stdlib.h>
 
-void	init_game(t_game *game);
-void	init_game_data(t_cub3d *game);
-void	init_mlx(t_game *game);
-void	init_textures(t_game *game);
-void	init_wall_params(t_wall_params *wall_params, t_ray *ray);
+int		validate_args(int argc, char **argv);
+bool	validate_and_save_line(const char *line, t_game *game);
+bool	validate_map(t_map *map);
+bool	check_map_closed(t_map *map);
 
 #endif
