@@ -6,7 +6,7 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 14:34:31 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/11/28 17:21:10 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/12/04 17:16:26 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
 # define KEY_RIGHT 65363
 
 # define ROT_SPEED 0.05
-# define MOVE_SPEED 0.05
+# define MOVE_SPEED 0.1
 
 // 移動方向を示すオフセット
 typedef struct s_offset
