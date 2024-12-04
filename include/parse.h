@@ -6,7 +6,7 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 14:34:31 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/11/30 16:14:40 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/12/04 17:37:35 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 
 # define MAP_INITIAL_SIZE 10
 # define RESIZE_FACTOR 2
+# define WHITESPACE_CHARS " \t\n\r\v\f"
 
 int		parse_color_line(const char *line, int color[3]);
 void	parse_cub_file(const char *filename, t_game *game);

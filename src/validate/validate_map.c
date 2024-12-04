@@ -6,7 +6,7 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 18:27:28 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/11/30 18:02:13 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/12/04 18:13:24 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,14 @@ bool	check_map_characters(t_map *map)
 	int		i;
 	int		j;
 
+	if (!map || !map->data)
+		return (false);
 	valid_chars = " 01NSEW";
 	i = 0;
 	while (i < map->height)
 	{
+		if (!map->data[i])
+			return (false);
 		j = 0;
 		while (map->data[i][j] != '\0')
 		{

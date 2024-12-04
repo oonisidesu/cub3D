@@ -6,7 +6,7 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 18:27:28 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/11/30 18:06:24 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/12/04 17:48:34 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,9 @@
 #include <stdbool.h>
 #include <stdio.h>
 
-bool	is_empty_line(const char *line, t_game *game)
+bool	is_empty_line(const char *line)
 {
-	char	*trimmed_line;
-	bool	result;
-
-	trimmed_line = ft_strtrim(line, " \t\n");
-	if (!trimmed_line)
-		print_error_free_exit("Failed to trim line\n", game);
-	result = (ft_strlen(trimmed_line) == 0);
-	free(trimmed_line);
-	return (result);
+	return (ft_strlen(line) == 0);
 }
 
 bool	is_map_line(const char *line, t_game *game)
@@ -56,7 +48,7 @@ bool	is_texture_or_color_line(const char *line)
 
 bool	validate_and_save_line(const char *line, t_game *game)
 {
-	if (is_empty_line(line, game))
+	if (is_empty_line(line))
 		return (true);
 	if (is_texture_or_color_line(line))
 		return (true);
