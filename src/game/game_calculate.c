@@ -6,7 +6,7 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:32:08 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/11/28 17:09:48 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/12/04 18:36:05 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,21 @@ void	perform_dda(t_game *game, t_ray *ray)
 			ray->map_y += ray->step_y;
 			ray->side = 1;
 		}
+		// 範囲外アクセスのチェック
+		if (ray->map_x < 0 || ray->map_x >= game->game_data.map.width
+			|| ray->map_y < 0 || ray->map_y >= game->game_data.map.height)
+		{
+			fprintf(stderr, "Error: Out-of-bounds access at map[%d][%d]\n",
+				ray->map_y, ray->map_x);
+			exit(EXIT_FAILURE);
+		}
+		// マップデータのNULLチェック
+		if (game->game_data.map.data == NULL)
+		{
+			fprintf(stderr, "Error: Map data is NULL\n");
+			exit(EXIT_FAILURE);
+		}
+		// マップデータへのアクセス
 		if (game->game_data.map.data[ray->map_y][ray->map_x] == '1')
 			ray->hit = 1;
 	}
