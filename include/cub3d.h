@@ -6,7 +6,7 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 17:30:03 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/11/29 18:44:55 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/12/06 15:50:27 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define CUB3D_H
 
 # include "mlx.h"
+# include <stdbool.h>
 # include <stdio.h>
 # include <stdlib.h>
 
@@ -23,7 +24,16 @@
 # define SUCCESS 0
 # define ERROR 1
 
-// テクスチャ情報を保持する構造体（修正版）
+typedef struct s_cub_el
+{
+	bool		has_no;
+	bool		has_so;
+	bool		has_we;
+	bool		has_ea;
+	bool		has_f;
+	bool		has_c;
+}				t_cub_el;
+
 typedef struct s_img
 {
 	void		*img;

@@ -6,7 +6,7 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 18:27:28 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/04 18:13:24 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/12/06 16:31:20 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,4 +73,13 @@ bool	validate_map(t_map *map)
 	if (!check_map_closed(map))
 		return (false);
 	return (true);
+}
+
+void	validate_cub_file(t_game *game, t_cub_el *cub_el_flag)
+{
+	if (!cub_el_flag->has_no || !cub_el_flag->has_so || !cub_el_flag->has_we
+		|| !cub_el_flag->has_ea || !cub_el_flag->has_f || !cub_el_flag->has_c)
+		print_error_free_exit("Missing required elements in .cub file\n", game);
+	if (!validate_map(&game->game_data.map))
+		print_error_free_exit("Invalid map\n", game);
 }

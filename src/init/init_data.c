@@ -6,13 +6,23 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 15:47:36 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/11/29 17:02:54 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/12/06 16:32:35 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "init.h"
 #include "ray.h"
 #include <math.h>
+
+void	init_cub_el(t_cub_el *cub_el_flag)
+{
+	cub_el_flag->has_no = false;
+	cub_el_flag->has_so = false;
+	cub_el_flag->has_we = false;
+	cub_el_flag->has_ea = false;
+	cub_el_flag->has_f = false;
+	cub_el_flag->has_c = false;
+}
 
 void	init_game_data(t_cub3d *game_data)
 {

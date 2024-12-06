@@ -6,7 +6,7 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:50:31 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/11/29 17:21:35 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/12/06 17:31:36 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,7 @@ void	print_error_exit(const char *message);
 void	print_error_free(const char *message, t_game *game);
 void	print_error_free_exit(const char *message, t_game *game);
 void	free_game(t_game *game);
+bool	is_prefix_and_whitespace(const char *line, const char *prefix,
+			const char *whitespace_chars);
 
 #endif
