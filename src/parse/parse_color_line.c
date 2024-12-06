@@ -6,7 +6,7 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 13:50:22 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/06 18:25:02 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/12/06 18:35:15 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,18 @@
 
 static bool	parse_color_value(const char **line, int *color_value)
 {
-	const char	*start = *line;
+	const char	*start;
+	int			digit_count;
 
+	start = *line;
+	digit_count = 0;
+	while (ft_isdigit(**line))
+	{
+		digit_count++;
+		if (digit_count > 3)
+			return (false);
+		(*line)++;
+	}
 	while (ft_isdigit(**line))
 		(*line)++;
 	if (start == *line)
