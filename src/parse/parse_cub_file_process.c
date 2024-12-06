@@ -6,7 +6,7 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 13:48:34 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/06 17:31:51 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/12/06 18:04:53 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,9 @@ static void	process_floor_color(const char *line, t_game *game,
 	if (cub_el_flag->has_f)
 		print_error_free_exit("Duplicate floor color\n", game);
 	cub_el_flag->has_f = true;
-	parse_color_line(line + 2, game->game_data.colors.floor);
+	if (!parse_color_line(remove_prefix_and_whitespace(line, "F",
+				WHITESPACE_CHARS), game->game_data.colors.floor))
+		print_error_free_exit("Failed to retrieve color.\n", game);
 }
 
 static void	process_ceiling_color(const char *line, t_game *game,
@@ -40,7 +42,9 @@ static void	process_ceiling_color(const char *line, t_game *game,
 	if (cub_el_flag->has_c)
 		print_error_free_exit("Duplicate ceiling color\n", game);
 	cub_el_flag->has_c = true;
-	parse_color_line(line + 2, game->game_data.colors.ceiling);
+	if (!parse_color_line(remove_prefix_and_whitespace(line, "C",
+				WHITESPACE_CHARS), game->game_data.colors.ceiling))
+		print_error_free_exit("Failed to retrieve color.\n", game);
 }
 
 static void	process_map_line_wrapper(const char *line, t_game *game,
