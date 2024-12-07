@@ -26,7 +26,7 @@ UNAME_S := $(shell uname -s)
 ifeq ($(UNAME_S), Darwin)
     MLX_LIBS = $(MLX_DARWIN) -framework OpenGL -framework AppKit $(X11_LIBS)
 else
-    MLX_LIBS = $(MLX_LINUX) $(X11_LIBS)
+    MLX_LIBS = $(MLX_LINUX) -L/usr/lib/x86_64-linux-gnu -lX11 -lXext -lm
 endif
 
 # 実行ファイル生成
