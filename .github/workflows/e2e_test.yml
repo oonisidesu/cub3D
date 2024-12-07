@@ -23,7 +23,6 @@ jobs:
       
       - name: Build MiniLibX
         run: |
-          git clone https://github.com/42Paris/minilibx-linux.git ./minilibx
           make -C ./minilibx
     
       - name: Compile binary
