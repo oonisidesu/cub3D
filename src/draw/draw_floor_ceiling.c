@@ -6,7 +6,7 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 16:14:17 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/07 16:22:28 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/12/07 16:25:03 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,12 @@ void	draw_floor_and_ceiling(t_game *game)
 	int	floor_color;
 	int	ceiling_color;
 
-	floor_color = (game->game_data.colors.floor[0] << 16) | (game->game_data.colors.floor[1] << 8) | (game->game_data.colors.floor[2]);
-	ceiling_color = (game->game_data.colors.ceiling[0] << 16) | (game->game_data.colors.ceiling[1] << 8) | (game->game_data.colors.ceiling[2]);
+	floor_color = (game->game_data.colors.floor[0] << 16) | \
+				(game->game_data.colors.floor[1] << 8) | \
+				(game->game_data.colors.floor[2]);
+	ceiling_color = (game->game_data.colors.ceiling[0] << 16) | \
+					(game->game_data.colors.ceiling[1] << 8) | \
+					(game->game_data.colors.ceiling[2]);
 	draw_ceiling(game, ceiling_color);
 	draw_floor(game, floor_color);
 }
