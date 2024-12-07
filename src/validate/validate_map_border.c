@@ -6,7 +6,7 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 18:27:28 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/07 14:26:32 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/12/07 14:48:46 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,14 +65,14 @@ bool	is_surrounded(char **map, int i, int j)
 
 bool	check_interior_cells(t_map *map)
 {
-	int	i;
-	int	j;
+	size_t	i;
+	size_t	j;
 
 	i = 1;
-	while (i < map->height - 1)
+	while (i < (size_t)(map->height - 1))
 	{
 		j = 1;
-		while (map->data[i][j] != '\0')
+		while (j < ft_strlen(map->data[i]) - 1)
 		{
 			if (map->data[i][j] == '0' || map->data[i][j] == 'N'
 				|| map->data[i][j] == 'S' || map->data[i][j] == 'E'
