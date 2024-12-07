@@ -24,6 +24,10 @@ jobs:
       - name: Build MiniLibX
         run: |
           make -C ./minilibx
+        
+      - name: Build libft
+        run: |
+          make -C ./libft
     
       - name: Compile binary
         run: |
