@@ -1,0 +1,25 @@
+name: e2e Test
+
+on:
+  pull_request:
+    branches:
+      - develop
+
+jobs:
+  test-bash-script:
+    name: Execute Bash Script
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup environment
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y gcc make
+
+      - name: Run Bash Script
+        run: |
+          chmod +x ./test/e2e/runner.sh
+          ./test/e2e/runner.sh
