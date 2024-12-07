@@ -6,12 +6,12 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 16:14:17 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/11/28 16:11:25 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/12/07 16:25:03 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game.h"
-#include "util.h"
+#include "utils.h"
 #include <math.h>
 
 void	draw_ceiling(t_game *game, int ceiling_color)

@@ -1,0 +1,44 @@
+name: e2e Test
+
+on:
+  pull_request:
+    branches:
+      - develop
+
+jobs:
+  e2e-test:
+    name: e2e Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y gcc make libx11-dev libxext-dev zlib1g-dev libbsd-dev
+      
+      - name: Build MiniLibX
+        run: |
+          make -C ./minilibx
+        
+      - name: Build libft
+        run: |
+          make -C ./libft
+    
+      - name: Compile binary
+        run: |
+          make clean || true
+          make
+
+      - name: Verify binary architecture
+        run: |
+          file ./cub3D
+
+      - name: Run Bash Script
+        run: |
+          chmod +x ./test/e2e/runner.sh
+          ./test/e2e/runner.sh

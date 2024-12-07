@@ -6,11 +6,11 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 15:15:45 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/11/21 17:59:11 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/12/07 16:20:42 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/util.h"
+#include "utils.h"
 #include "init.h"
 
 void	init_textures(t_game *game)

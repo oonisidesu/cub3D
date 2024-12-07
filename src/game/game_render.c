@@ -6,7 +6,7 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:33:27 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/11/28 17:05:46 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/12/07 16:22:28 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "game.h"
 #include "init.h"
 #include "ray.h"
-#include "util.h"
+#include "utils.h"
 
 void	process_column(t_game *game, t_ray *ray, t_wall_params *wall_params)
 {
