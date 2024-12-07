@@ -6,11 +6,11 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 16:12:23 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/07 16:22:28 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/12/07 16:27:32 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/utils.h"
+#include "utils.h"
 #include "parse.h"
 #include <stdio.h>
 #include <stdlib.h>

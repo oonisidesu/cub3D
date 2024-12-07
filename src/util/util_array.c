@@ -6,13 +6,12 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 14:52:15 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/07 16:22:28 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/12/07 16:27:38 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/utils.h"
+#include "utils.h"
 
-// 配列を拡張する関数
 char	**resize_array(char **old_array, int old_size, int new_size)
 {
 	char	**new_array;
