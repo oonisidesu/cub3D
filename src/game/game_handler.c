@@ -6,7 +6,7 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 18:34:21 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/11/28 17:22:33 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/12/07 15:16:58 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	exit_program(t_game *game)
 	if (game->win)
 		mlx_destroy_window(game->mlx, game->win);
 	exit(0);
-	return (0); // 必須のリターン値（無意味だが MiniLibX のために必要）
+	return (0);
 }
 
 int	handle_keypress(int keycode, t_game *game)
