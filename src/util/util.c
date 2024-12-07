@@ -6,11 +6,11 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 17:23:51 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/06 17:57:01 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/12/07 16:22:28 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/util.h"
+#include "include/utils.h"
 #include "libft.h"
 
 bool	is_prefix_and_whitespace(const char *line, const char *prefix,

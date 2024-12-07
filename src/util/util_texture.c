@@ -6,11 +6,11 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 15:12:19 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/11/21 15:14:34 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/12/07 16:22:28 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/util.h"
+#include "include/utils.h"
 
 void	load_texture(t_game *game, t_img *texture, char *path)
 {

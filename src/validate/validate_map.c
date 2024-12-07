@@ -6,12 +6,12 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 18:27:28 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/06 16:31:20 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/12/07 16:22:28 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "util.h"
+#include "utils.h"
 #include "validate.h"
 #include <stdbool.h>
 #include <stdio.h>

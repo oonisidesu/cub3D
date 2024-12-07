@@ -6,11 +6,11 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:46:31 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/11/21 15:14:16 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/12/07 16:22:28 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/util.h"
+#include "include/utils.h"
 
 void	put_pixel_to_image(t_game *game, int x, int y, int color)
 {

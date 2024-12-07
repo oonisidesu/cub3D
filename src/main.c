@@ -6,7 +6,7 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:38:01 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/11/30 16:14:04 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/12/07 16:21:19 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "get_next_line.h"
 #include "init.h"
 #include "parse.h"
-#include "util.h"
+#include "utils.h"
 #include "validate.h"
 #include <fcntl.h>
 #include <stdio.h>

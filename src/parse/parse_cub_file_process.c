@@ -6,14 +6,14 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 13:48:34 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/06 18:04:53 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/12/07 16:22:28 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include "libft.h"
 #include "parse.h"
-#include "util.h"
+#include "utils.h"
 #include "validate.h"
 #include <fcntl.h>
 

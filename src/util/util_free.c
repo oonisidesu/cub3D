@@ -6,12 +6,12 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 16:36:45 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/11/29 17:17:11 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/12/07 16:22:28 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-#include "include/util.h"
+#include "include/utils.h"
 
 void	free_textures(t_texture *textures)
 {

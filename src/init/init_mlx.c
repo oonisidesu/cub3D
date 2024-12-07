@@ -6,12 +6,12 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 15:47:36 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/11/29 17:22:41 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/12/07 16:22:28 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "init.h"
-#include "util.h"
+#include "utils.h"
 
 void	init_mlx(t_game *game)
 {
