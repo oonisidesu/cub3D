@@ -6,7 +6,7 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 13:48:34 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/09 21:45:17 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/12/10 15:51:02 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ static char	*read_and_trim_line(int fd, t_game *game)
 	line = get_next_line(fd);
 	if (line == NULL)
 		return (NULL);
+	
 	trimmed_line = ft_strtrim(line, WHITESPACE_CHARS);
 	free(line);
 	if (trimmed_line == NULL)
@@ -52,7 +53,7 @@ static void	process_file_lines(int fd, t_game *game, t_cub_el *cub_el_flag)
 	line = read_and_trim_line(fd, game);
 	while (line != NULL)
 	{
-		if (!validate_and_save_line(line, game))
+		if (!validate_line(line, game))
 		{
 			free(line);
 			close(fd);

@@ -6,7 +6,7 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 18:13:53 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/08 19:17:09 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/12/10 15:49:52 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <stdlib.h>
 
 int		validate_args(int argc, char **argv);
-bool	validate_and_save_line(const char *line, t_game *game);
+bool	validate_line(const char *line, t_game *game);
 bool	validate_map(t_map *map);
 void	validate_cub_file(t_game *game, t_cub_el *cub_el_flag);
 bool	check_map_closed(t_map *map);
