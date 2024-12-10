@@ -6,7 +6,7 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 17:30:03 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/06 15:50:27 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/12/10 17:59:56 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,10 @@
 # define WINDOW_TITLE "cub3D"
 # define WINDOW_WIDTH 800
 # define WINDOW_HEIGHT 600
-# define SUCCESS 0
-# define ERROR 1
+# define KEYPRESS 2
+# define KEYPRESS_MASK 1
+# define DESTROY 17
+# define DESTROY_MASK 0
 
 typedef struct s_cub_el
 {
