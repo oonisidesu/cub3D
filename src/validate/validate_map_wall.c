@@ -6,7 +6,7 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 18:27:28 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/08 19:16:03 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/12/10 15:41:45 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,93 +16,106 @@
 #include <stdbool.h>
 #include <stdio.h>
 
-bool	check_space_surrounded(char **map, size_t i, size_t j)
+// 再帰的な探索関数
+bool	is_surrounded_by_walls(char **map, int height, int width, int i, int j,
+		bool **visited)
 {
-	// マップ境界のチェック
-	if (i == 0 || j == 0 || map[i + 1] == NULL || map[i][j + 1] == '\0')
+	bool	up;
+	bool	down;
+	bool	left;
+	bool	right;
+
+	// 範囲外アクセスを防止
+	if (i < 0 || j < 0 || i >= height || j >= width)
+	{
+		printf("Out of bounds detected at (%d, %d)\n", i, j);
 		return (false);
-	// 空白セルの上下左右に "1" または " " があるかを確認
-	if ((map[i - 1][j] != '1' && map[i - 1][j] != ' ') || // 上
-		(map[i + 1][j] != '1' && map[i + 1][j] != ' ') || // 下
-		(map[i][j - 1] != '1' && map[i][j - 1] != ' ') || // 左
-		(map[i][j + 1] != '1' && map[i][j + 1] != ' '))   // 右
-	{
-		printf("Invalid space at (%zu, %zu): not properly surrounded\n", i, j);
-		return (false);
 	}
-	return (true);
-}
-
-bool	check_interior_cells(t_map *map)
-{
-	size_t	i;
-	size_t	j;
-	char	cell;
-
-	i = 1;
-	while (i < (size_t)(map->height - 1)) // マップの端を除く行を検証
+	// 壁または空白なら探索終了（壁とみなす）
+	if (map[i][j] == '1' || map[i][j] == ' ')
 	{
-		j = 1;
-		while (j < ft_strlen(map->data[i]) - 1) // 行の端を除く列を検証
-		{
-			cell = map->data[i][j];
-			if (cell == '0' || cell == 'N' || cell == 'S' || cell == 'E'
-				|| cell == 'W')
-			{
-				// プレイヤー位置や床のセルが囲まれているか確認
-				if (!has_two_or_more_walls_in_row(map->data[i])
-					|| !has_two_or_more_walls_in_column(map->data, j,
-						map->height))
-				{
-					printf("Cell at (%zu, %zu) is not surrounded\n", i, j);
-					return (false);
-				}
-			}
-			else if (cell == ' ') // 空白セルの検証
-			{
-				if (!check_space_surrounded(map->data, i, j))
-					return (false);
-			}
-			j++;
-		}
-		i++;
+		return (true);
 	}
-	return (true);
-}
-
-bool	check_map_walls(t_map *map)
-{
-	size_t	i;
-	size_t	j;
-
-	i = 0;
-	while (i < (size_t)map->height)
+	// 既に訪問済みならスキップ
+	if (visited[i][j])
 	{
-		if (!has_two_or_more_walls_in_row(map->data[i]))
-		{
-			printf("Row %zu does not have enough walls.\n", i);
+		return (true);
+	}
+	// 訪問済みに設定
+	visited[i][j] = true;
+	// プレイヤー位置や床 (`0`, `N`, `S`, `E`, `W`) に対するチェック
+	if (map[i][j] == '0' || map[i][j] == 'N' || map[i][j] == 'S'
+		|| map[i][j] == 'E' || map[i][j] == 'W')
+	{
+		// 周囲を探索
+		up = is_surrounded_by_walls(map, height, width, i - 1, j, visited);
+		if (!up)
+			return (false); // 壁が見つかったらそれ以降探索しない
+		down = is_surrounded_by_walls(map, height, width, i + 1, j, visited);
+		if (!down)
 			return (false);
-		}
-		i++;
-	}
-	j = 0;
-	while (j < ft_strlen(map->data[0]))
-	{
-		if (!has_two_or_more_walls_in_column(map->data, j, (size_t)map->height))
-		{
-			printf("Column %zu does not have enough walls.\n", j);
+		left = is_surrounded_by_walls(map, height, width, i, j - 1, visited);
+		if (!left)
 			return (false);
-		}
-		j++;
+		right = is_surrounded_by_walls(map, height, width, i, j + 1, visited);
+		if (!right)
+			return (false);
+		return (true);
 	}
-	return (true);
+	// 無効な文字があればエラー
+	printf("Invalid character '%c' detected at (%d, %d)\n", map[i][j], i, j);
+	return (false);
 }
 
 bool	check_map_closed(t_map *map)
 {
-	if (!check_map_walls(map))
+	bool	**visited;
+
+	// 訪問済み配列を初期化
+	visited = malloc(sizeof(bool *) * map->height);
+	if (!visited)
+	{
+		perror("Failed to allocate memory for visited array");
 		return (false);
-	if (!check_interior_cells(map))
-		return (false);
+	}
+	for (int i = 0; i < map->height; i++)
+	{
+		visited[i] = calloc(map->width, sizeof(bool));
+		if (!visited[i])
+		{
+			perror("Failed to allocate memory for visited row");
+			for (int k = 0; k < i; k++)
+				free(visited[k]);
+			free(visited);
+			return (false);
+		}
+	}
+	// プレイヤーの初期位置を検索
+	for (int i = 0; i < map->height; i++)
+	{
+		for (int j = 0; j < map->width; j++)
+		{
+			if (map->data[i][j] == 'N' || map->data[i][j] == 'S'
+				|| map->data[i][j] == 'E' || map->data[i][j] == 'W')
+			{
+				if (!is_surrounded_by_walls(map->data, map->height, map->width,
+						i, j, visited))
+				{
+					printf("Error: Player's position (%d, \
+						%d) is not surrounded by walls.\n", i, j);
+					for (int k = 0; k < map->height; k++)
+						free(visited[k]);
+					free(visited);
+					return (false);
+				}
+			}
+		}
+	}
+	// メモリ解放
+	for (int i = 0; i < map->height; i++)
+	{
+		free(visited[i]);
+	}
+	free(visited);
 	return (true);
 }

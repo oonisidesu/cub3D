@@ -6,10 +6,11 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 13:48:34 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/07 16:22:28 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/12/09 21:45:17 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "display.h"
 #include "get_next_line.h"
 #include "init.h"
 #include "libft.h"
@@ -63,17 +64,37 @@ static void	process_file_lines(int fd, t_game *game, t_cub_el *cub_el_flag)
 	}
 }
 
-bool	is_texture_line(const char *line)
+void	process_map(t_game *game)
 {
-	if (is_prefix_and_whitespace(line, "NO", WHITESPACE_CHARS))
-		return (true);
-	if (is_prefix_and_whitespace(line, "SO", WHITESPACE_CHARS))
-		return (true);
-	if (is_prefix_and_whitespace(line, "WE", WHITESPACE_CHARS))
-		return (true);
-	if (is_prefix_and_whitespace(line, "EA", WHITESPACE_CHARS))
-		return (true);
-	return (false);
+	t_map	*map_data;
+	size_t	i;
+	size_t	j;
+	char	**new_map;
+
+	map_data = &game->game_data.map;
+	map_data->height = get_map_max_height(map_data->data);
+	map_data->width = get_map_max_width(map_data->data);
+	new_map = allocate_map_memory(map_data->height, map_data->width);
+	if (!new_map)
+		print_error_free_exit("Failed to allocate memory for map\n", game);
+	i = 0;
+	while (i < (size_t)map_data->height)
+	{
+		j = 0;
+		while (map_data->data[i][j] != '\0')
+		{
+			new_map[i][j] = (map_data->data[i][j] == ' ') ? '0' : map_data->data[i][j];
+			j++;
+		}
+		while (j < (size_t)map_data->width)
+		{
+			new_map[i][j] = '0';
+			j++;
+		}
+		i++;
+	}
+	free_array(map_data->data);
+	map_data->data = new_map;
 }
 
 void	parse_cub_file(const char *filename, t_game *game)
@@ -85,5 +106,7 @@ void	parse_cub_file(const char *filename, t_game *game)
 	fd = open_cub_file(filename, game);
 	process_file_lines(fd, game, &cub_el_flag);
 	close(fd);
+	process_map(game);
+	display_map(&game->game_data.map);
 	validate_cub_file(game, &cub_el_flag);
 }
