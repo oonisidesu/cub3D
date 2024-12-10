@@ -6,7 +6,7 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 14:56:47 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/11/25 18:57:22 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/12/09 21:51:47 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	display_map(t_map *map)
 	printf("Map Width: %d, Height: %d\n", map->width, map->height);
 	while (row < map->height)
 	{
-		printf("%s", map->data[row]);
+		printf("%s\n", map->data[row]);
 		row++;
 	}
 }

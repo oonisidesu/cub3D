@@ -6,7 +6,7 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 13:50:25 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/07 16:22:28 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/12/09 21:31:38 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,18 @@ bool	parse_texture_line(const char *line, t_texture *textures,
 	else if (is_prefix_and_whitespace(line, "EA", WHITESPACE_CHARS))
 		return (process_texture(line, "EA", &cub_el_flag->has_ea,
 				&textures->c_east));
+	return (false);
+}
+
+bool	is_texture_line(const char *line)
+{
+	if (is_prefix_and_whitespace(line, "NO", WHITESPACE_CHARS))
+		return (true);
+	if (is_prefix_and_whitespace(line, "SO", WHITESPACE_CHARS))
+		return (true);
+	if (is_prefix_and_whitespace(line, "WE", WHITESPACE_CHARS))
+		return (true);
+	if (is_prefix_and_whitespace(line, "EA", WHITESPACE_CHARS))
+		return (true);
 	return (false);
 }

@@ -6,7 +6,7 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 16:36:45 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/07 16:27:49 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/12/09 21:27:14 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,19 @@ void	free_game(t_game *game)
 	free_textures(&game->game_data.textures);
 	free_map(&game->game_data.map);
 	free_mlx_resources(game);
+}
+
+void	free_array(char **array)
+{
+	size_t	i;
+
+	if (!array)
+		return ;
+	i = 0;
+	while (array[i])
+	{
+		free(array[i]);
+		i++;
+	}
+	free(array);
 }
