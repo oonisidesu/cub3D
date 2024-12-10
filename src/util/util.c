@@ -6,12 +6,13 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 17:23:51 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/07 16:28:04 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/12/10 18:27:17 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
 #include "libft.h"
+#include "parse.h"
 
 bool	is_prefix_and_whitespace(const char *line, const char *prefix,
 		const char *whitespace_chars)
@@ -42,4 +43,15 @@ const char	*remove_prefix_and_whitespace(const char *line, const char *prefix,
 	while (*line != '\0' && ft_strchr(whitespace_chars, *line) != NULL)
 		line++;
 	return (line);
+}
+
+bool	is_whitespace_only(const char *line)
+{
+	while (*line)
+	{
+		if (!ft_strchr(WHITESPACE_CHARS, *line))
+			return (false);
+		line++;
+	}
+	return (true);
 }

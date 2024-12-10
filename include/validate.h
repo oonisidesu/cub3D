@@ -6,7 +6,7 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 18:13:53 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/10 15:49:52 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/12/10 18:14:35 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 # include <stdbool.h>
 # include <stdio.h>
 # include <stdlib.h>
+
+# define VALID_MAP_CHARS " 01NSEW"
 
 int		validate_args(int argc, char **argv);
 bool	validate_line(const char *line, t_game *game);

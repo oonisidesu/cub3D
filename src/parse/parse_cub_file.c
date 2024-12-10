@@ -6,7 +6,7 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 13:48:34 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/10 17:14:03 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/12/10 18:11:27 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,7 @@ static char	*read_and_trim_line(int fd, t_game *game)
 	trimmed_line = ft_strtrim_r(line, WHITESPACE_CHARS);
 	free(line);
 	if (trimmed_line == NULL)
-		print_error_free_exit("Failed to allocate memory during trimming\n",
-			game);
+		print_error_free_exit("Failed to trimming\n", game);
 	return (trimmed_line);
 }
 
@@ -63,9 +62,8 @@ static void	process_file_lines(int fd, t_game *game, t_cub_el *cub_el_flag)
 		line = read_and_trim_line(fd, game);
 	}
 	free(line);
-	if (game->game_data.map.data != NULL) {
-        game->game_data.map.data[game->game_data.map.height] = NULL;
-    }
+	if (game->game_data.map.data != NULL)
+		game->game_data.map.data[game->game_data.map.height] = NULL;
 }
 
 void	process_map(t_game *game)

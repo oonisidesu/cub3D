@@ -6,7 +6,7 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:50:31 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/10 17:07:23 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/12/10 18:27:37 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,6 @@ bool		is_prefix_and_whitespace(const char *line, const char *prefix,
 				const char *whitespace_chars);
 const char	*remove_prefix_and_whitespace(const char *line, const char *prefix,
 				const char *whitespace_chars);
+bool		is_whitespace_only(const char *line);
 
 #endif

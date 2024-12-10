@@ -6,7 +6,7 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 14:52:15 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/10 17:05:45 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/12/10 18:36:56 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,7 @@ char	**resize_array(char **old_array, int old_size, int new_size)
 
 	new_array = malloc(sizeof(char *) * new_size);
 	if (!new_array)
-	{
-		perror("Error allocating memory for new array");
-		exit(EXIT_FAILURE);
-	}
+		return (NULL);
 	i = 0;
 	while (i < old_size)
 	{
