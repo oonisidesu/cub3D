@@ -6,7 +6,7 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 14:52:15 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/10 18:36:56 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/12/11 22:49:03 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,15 @@ size_t	get_map_max_width(t_map *map)
 {
 	size_t	max_width;
 	size_t	current_width;
+	size_t	i;
 
 	max_width = 0;
-	for (size_t i = 0; i < (size_t)map->height; i++)
+	i = 0;
+	while (i < (size_t)map->height)
 	{
 		if (map->data[i] == NULL)
 		{
-			printf("Skipping null map_data[%zu]\n", i);
+			i++;
 			continue ;
 		}
 		current_width = ft_strlen(map->data[i]);
@@ -59,7 +61,7 @@ size_t	get_map_max_width(t_map *map)
 		{
 			max_width = current_width;
 		}
-		printf("Checking length of map_data[%zu]: %s\n", i, map->data[i]);
+		i++;
 	}
 	return (max_width);
 }

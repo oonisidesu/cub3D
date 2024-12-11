@@ -6,13 +6,14 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 17:23:51 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/10 18:27:17 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/12/11 22:10:56 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils.h"
 #include "libft.h"
 #include "parse.h"
+#include "utils.h"
+#include <fcntl.h>
 
 bool	is_prefix_and_whitespace(const char *line, const char *prefix,
 		const char *whitespace_chars)
@@ -54,4 +55,29 @@ bool	is_whitespace_only(const char *line)
 		line++;
 	}
 	return (true);
+}
+
+int	open_cub_file(const char *filename, t_game *game)
+{
+	int	fd;
+
+	fd = open(filename, O_RDONLY);
+	if (fd < 0)
+		print_error_free_exit("Failed to open file\n", game);
+	return (fd);
+}
+
+char	*read_and_trim_line(int fd, t_game *game)
+{
+	char	*line;
+	char	*trimmed_line;
+
+	line = get_next_line(fd);
+	if (line == NULL)
+		return (NULL);
+	trimmed_line = ft_strtrim_r(line, WHITESPACE_CHARS);
+	free(line);
+	if (trimmed_line == NULL)
+		print_error_free_exit("Failed to trimming\n", game);
+	return (trimmed_line);
 }
