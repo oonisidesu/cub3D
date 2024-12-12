@@ -6,7 +6,7 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 13:48:34 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/10 17:14:03 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/12/12 19:54:06 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,32 +18,6 @@
 #include "utils.h"
 #include "validate.h"
 #include <fcntl.h>
-
-static int	open_cub_file(const char *filename, t_game *game)
-{
-	int	fd;
-
-	fd = open(filename, O_RDONLY);
-	if (fd < 0)
-		print_error_free_exit("Failed to open file\n", game);
-	return (fd);
-}
-
-static char	*read_and_trim_line(int fd, t_game *game)
-{
-	char	*line;
-	char	*trimmed_line;
-
-	line = get_next_line(fd);
-	if (line == NULL)
-		return (NULL);
-	trimmed_line = ft_strtrim_r(line, WHITESPACE_CHARS);
-	free(line);
-	if (trimmed_line == NULL)
-		print_error_free_exit("Failed to allocate memory during trimming\n",
-			game);
-	return (trimmed_line);
-}
 
 static void	process_file_lines(int fd, t_game *game, t_cub_el *cub_el_flag)
 {
@@ -63,17 +37,38 @@ static void	process_file_lines(int fd, t_game *game, t_cub_el *cub_el_flag)
 		line = read_and_trim_line(fd, game);
 	}
 	free(line);
-	if (game->game_data.map.data != NULL) {
-        game->game_data.map.data[game->game_data.map.height] = NULL;
-    }
+	if (game->game_data.map.data != NULL)
+		game->game_data.map.data[game->game_data.map.height] = NULL;
 }
 
-void	process_map(t_game *game)
+static void	normalize_map_line(char **new_map, char *line, size_t width,
+		size_t row)
+{
+	size_t	j;
+
+	if (!new_map || !new_map[row] || !line)
+		return ;
+	j = 0;
+	while (line[j] && j < width)
+	{
+		if (!ft_strchr(WHITESPACE_CHARS, line[j]))
+			new_map[row][j] = '0';
+		else
+			new_map[row][j] = line[j];
+		j++;
+	}
+	while (j < width)
+	{
+		new_map[row][j] = '0';
+		j++;
+	}
+}
+
+static void	process_map(t_game *game)
 {
 	t_map	*map_data;
-	size_t	i;
-	size_t	j;
 	char	**new_map;
+	size_t	i;
 
 	map_data = &game->game_data.map;
 	map_data->height = get_map_max_height(map_data->data);
@@ -84,17 +79,7 @@ void	process_map(t_game *game)
 	i = 0;
 	while (i < (size_t)map_data->height)
 	{
-		j = 0;
-		while (map_data->data[i][j] != '\0')
-		{
-			new_map[i][j] = (map_data->data[i][j] == ' ') ? '0' : map_data->data[i][j];
-			j++;
-		}
-		while (j < (size_t)map_data->width)
-		{
-			new_map[i][j] = '0';
-			j++;
-		}
+		normalize_map_line(new_map, map_data->data[i], map_data->width, i);
 		i++;
 	}
 	free_array(map_data->data);
@@ -111,6 +96,5 @@ void	parse_cub_file(const char *filename, t_game *game)
 	process_file_lines(fd, game, &cub_el_flag);
 	close(fd);
 	process_map(game);
-	display_map(&game->game_data.map);
 	validate_cub_file(game, &cub_el_flag);
 }

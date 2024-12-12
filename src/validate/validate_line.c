@@ -6,7 +6,7 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 18:27:28 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/10 15:49:37 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/12/10 18:15:11 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,26 +16,23 @@
 #include <stdbool.h>
 #include <stdio.h>
 
-bool	is_empty_line(const char *line)
+static bool	is_empty_line(const char *line)
 {
 	return (ft_strlen(line) == 0);
 }
 
-bool	is_map_line(const char *line, t_game *game)
+static bool	is_map_line(const char *line, t_game *game)
 {
-	char	*valid_chars;
-
-	valid_chars = " 01NSEW";
 	while (*line)
 	{
-		if (!ft_strchr(valid_chars, *line))
+		if (!ft_strchr(VALID_MAP_CHARS, *line))
 			print_error_free_exit("Invalid charactere in map line\n", game);
 		line++;
 	}
 	return (true);
 }
 
-bool	is_texture_or_color_line(const char *line)
+static bool	is_texture_or_color_line(const char *line)
 {
 	if (ft_strncmp(line, "NO ", 3) == 0 || ft_strncmp(line, "SO ", 3) == 0
 		|| ft_strncmp(line, "WE ", 3) == 0 || ft_strncmp(line, "EA ", 3) == 0

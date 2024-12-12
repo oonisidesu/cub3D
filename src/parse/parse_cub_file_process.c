@@ -6,7 +6,7 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 13:48:34 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/07 16:22:28 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/12/10 18:52:02 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,8 @@ static void	process_map_line_wrapper(const char *line, t_game *game,
 	if (cub_el_flag->has_no && cub_el_flag->has_so && cub_el_flag->has_we
 		&& cub_el_flag->has_ea && cub_el_flag->has_f && cub_el_flag->has_c)
 	{
-		parse_map_line(line, &game->game_data.map);
+		if (!parse_map_line(line, &game->game_data.map))
+			print_error_free_exit("Failed to parse map line\n", game);
 	}
 	else
 	{
@@ -69,6 +70,6 @@ void	process_cub_line(const char *line, t_game *game, t_cub_el *cub_el_flag)
 		process_floor_color(line, game, cub_el_flag);
 	else if (is_prefix_and_whitespace(line, "C", WHITESPACE_CHARS))
 		process_ceiling_color(line, game, cub_el_flag);
-	else if (ft_strlen(line) > 0)
+	else if (ft_strlen(line) > 0 && !is_whitespace_only(line))
 		process_map_line_wrapper(line, game, cub_el_flag);
 }

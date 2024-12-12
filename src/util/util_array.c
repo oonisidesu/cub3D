@@ -6,7 +6,7 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 14:52:15 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/10 17:05:45 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/12/11 22:49:03 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,7 @@ char	**resize_array(char **old_array, int old_size, int new_size)
 
 	new_array = malloc(sizeof(char *) * new_size);
 	if (!new_array)
-	{
-		perror("Error allocating memory for new array");
-		exit(EXIT_FAILURE);
-	}
+		return (NULL);
 	i = 0;
 	while (i < old_size)
 	{
@@ -48,13 +45,15 @@ size_t	get_map_max_width(t_map *map)
 {
 	size_t	max_width;
 	size_t	current_width;
+	size_t	i;
 
 	max_width = 0;
-	for (size_t i = 0; i < (size_t)map->height; i++)
+	i = 0;
+	while (i < (size_t)map->height)
 	{
 		if (map->data[i] == NULL)
 		{
-			printf("Skipping null map_data[%zu]\n", i);
+			i++;
 			continue ;
 		}
 		current_width = ft_strlen(map->data[i]);
@@ -62,7 +61,7 @@ size_t	get_map_max_width(t_map *map)
 		{
 			max_width = current_width;
 		}
-		printf("Checking length of map_data[%zu]: %s\n", i, map->data[i]);
+		i++;
 	}
 	return (max_width);
 }
