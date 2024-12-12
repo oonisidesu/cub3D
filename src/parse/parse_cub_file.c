@@ -6,7 +6,7 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 13:48:34 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/12 15:49:24 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/12/12 19:49:15 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,12 @@ static void	normalize_map_line(char **new_map, char *line, size_t width,
 {
 	size_t	j;
 
+	if (!new_map || !new_map[row] || !line)
+		return ;
 	j = 0;
-	while (line[j] != '\0')
+	while (line[j] && j < width)
 	{
-		if (line[j] == ' ')
+		if (!ft_strchr(line[j], WHITESPACE_CHARS))
 			new_map[row][j] = '0';
 		else
 			new_map[row][j] = line[j];
