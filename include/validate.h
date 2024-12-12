@@ -6,7 +6,7 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 18:13:53 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/12 17:40:39 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/12/12 19:15:26 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,12 @@
 
 # define VALID_MAP_CHARS " 01NSEW"
 # define PLAYER_CHARS "NSEW"
+
+typedef enum e_visit_status
+{
+	NOT_VISITED = 0,
+	VISITED = 1
+}		t_visit_status;
 
 int		validate_args(int argc, char **argv);
 bool	validate_line(const char *line, t_game *game);

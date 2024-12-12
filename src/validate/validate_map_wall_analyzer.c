@@ -6,7 +6,7 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 18:27:28 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/12 19:12:25 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/12/12 19:16:12 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,9 @@ bool	is_surrounded_by_walls(t_map *map, size_t i, size_t j, char **visited)
 		return (false);
 	if (is_wall_or_space(map, i, j))
 		return (true);
-	if (visited[i][j])
+	if (visited[i][j] == VISITED)
 		return (true);
-	visited[i][j] = true;
+	visited[i][j] = VISITED;
 	if (!is_valid_map_char(map, i, j))
 		return (false);
 	return (explore_neighbors(map, i, j, visited));

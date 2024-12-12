@@ -6,7 +6,7 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 18:27:28 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/12 17:40:58 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/12/12 19:17:58 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static char	**allocate_visited_map(t_map *map)
 			free_array(visited);
 			return (NULL);
 		}
-		ft_memset(visited[i], 0, map->width * sizeof(char));
+		ft_memset(visited[i], NOT_VISITED, map->width * sizeof(char));
 		i++;
 	}
 	return (visited);
