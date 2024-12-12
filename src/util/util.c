@@ -6,10 +6,11 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 17:23:51 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/11 22:10:56 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/12/12 16:32:08 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "get_next_line.h"
 #include "libft.h"
 #include "parse.h"
 #include "utils.h"

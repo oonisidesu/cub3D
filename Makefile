@@ -11,7 +11,7 @@ SRCS = src/main.c \
        src/init/init_data.c src/init/init_mlx.c src/init/init_ray.c src/init/init_texture.c src/init/init_wall.c\
        src/parse/parse_color_line.c src/parse/parse_cub_file_process.c src/parse/parse_cub_file.c src/parse/parse_map_line.c src/parse/parse_texture_line.c \
        src/util/util_array.c src/util/util_error.c src/util/util_free.c src/util/util_image.c src/util/util_texture.c src/util/util.c \
-       src/validate/validate_args.c src/validate/validate_line.c src/validate/validate_map_wall_util.c src/validate/validate_map_wall.c src/validate/validate_map.c
+       src/validate/validate_args.c src/validate/validate_line.c src/validate/validate_map_position.c src/validate/validate_map_wall_analyzer.c src/validate/validate_map_wall_util.c src/validate/validate_map_wall.c src/validate/validate_map.c
 
 OBJ_DIR = obj
 OBJS = $(SRCS:src/%.c=$(OBJ_DIR)/%.o)
