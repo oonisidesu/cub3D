@@ -6,7 +6,7 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 18:27:28 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/12 19:17:58 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/12/12 19:37:51 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,19 @@
 #include "validate.h"
 #include <stdbool.h>
 #include <stdio.h>
+
+static void	free_visited_map(char **visited, size_t height)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < height)
+	{
+		free(visited[i]);
+		i++;
+	}
+	free(visited);
+}
 
 static char	**allocate_visited_map(t_map *map)
 {
@@ -30,26 +43,13 @@ static char	**allocate_visited_map(t_map *map)
 		visited[i] = malloc(map->width * sizeof(char));
 		if (!visited[i])
 		{
-			free_array(visited);
+			free_visited_map(visited, i);
 			return (NULL);
 		}
 		ft_memset(visited[i], NOT_VISITED, map->width * sizeof(char));
 		i++;
 	}
 	return (visited);
-}
-
-static void	free_visited_map(char **visited, size_t height)
-{
-	size_t	i;
-
-	i = 0;
-	while (i < height)
-	{
-		free(visited[i]);
-		i++;
-	}
-	free(visited);
 }
 
 static bool	is_valid_player_char(t_map *map, size_t i, size_t j)
