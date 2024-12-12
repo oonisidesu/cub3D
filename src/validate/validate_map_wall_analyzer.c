@@ -6,7 +6,7 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 18:27:28 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/12 17:32:15 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/12/12 19:12:25 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,15 @@ static bool	is_valid_map_char(t_map *map, size_t i, size_t j)
 
 static bool	explore_neighbors(t_map *map, size_t i, size_t j, char **visited)
 {
-	if (!is_surrounded_by_walls(map, i - 1, j, visited))
+	if (i > 0 && !is_surrounded_by_walls(map, i - 1, j, visited))
 		return (false);
-	if (!is_surrounded_by_walls(map, i + 1, j, visited))
+	if ((i + 1) < (size_t)map->height && !is_surrounded_by_walls(map, i + 1, j,
+			visited))
 		return (false);
-	if (!is_surrounded_by_walls(map, i, j - 1, visited))
+	if (j > 0 && !is_surrounded_by_walls(map, i, j - 1, visited))
 		return (false);
-	if (!is_surrounded_by_walls(map, i, j + 1, visited))
+	if ((j + 1) < (size_t)map->width && !is_surrounded_by_walls(map, i, j + 1,
+			visited))
 		return (false);
 	return (true);
 }
