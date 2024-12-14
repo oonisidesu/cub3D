@@ -24,18 +24,23 @@ X11_LIBS = /usr/X11R6/lib/libX11.dylib /usr/X11R6/lib/libXext.dylib
 UNAME_S := $(shell uname -s)
 
 ifeq ($(UNAME_S), Darwin)
+	MLX_TARGET = $(MLX_DARWIN)
     MLX_LIBS = $(MLX_DARWIN) -framework OpenGL -framework AppKit $(X11_LIBS)
 else
+	MLX_TARGET = $(MLX_LINUX)
     MLX_LIBS = $(MLX_LINUX) -L/usr/lib/x86_64-linux-gnu -lX11 -lXext -lm
 endif
 
-$(NAME): $(LIBFT) $(MLX) $(OBJS)
+$(NAME): $(LIBFT) $(MLX_TARGET) $(OBJS)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBFT) $(MLX_LIBS)
 
 $(LIBFT):
 	$(MAKE) -C libft
 
-$(MLX):
+$(MLX_DARWIN):
+	$(MAKE) -C minilibx
+
+$(MLX_LINUX):
 	$(MAKE) -C minilibx
 
 $(OBJ_DIR)/%.o: src/%.c
