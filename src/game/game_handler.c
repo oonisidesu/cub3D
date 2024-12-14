@@ -6,7 +6,7 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 18:34:21 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/07 15:16:58 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/12/14 12:58:59 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,8 @@ void	process_key_rotation(int keycode, t_player *player)
 
 int	exit_program(t_game *game)
 {
-	if (game->win)
-		mlx_destroy_window(game->mlx, game->win);
-	exit(0);
+	free_game(game);
+	exit(EXIT_SUCCESS);
 	return (0);
 }
 
