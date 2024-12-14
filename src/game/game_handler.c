@@ -6,11 +6,12 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 18:34:21 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/14 12:58:59 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/12/14 13:04:49 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game.h"
+#include "utils.h"
 #include <math.h>
 
 void	process_key_move(int keycode, t_player *player, t_offset *offset)

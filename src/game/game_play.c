@@ -6,7 +6,7 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 17:24:20 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/14 12:43:49 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/12/14 14:12:24 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,5 +88,5 @@ void	set_player_position(t_game *game)
 	map = &game->game_data.map;
 	player = &game->game_data.player;
 	if (!find_player_start_position(map, player))
-		print_error_free_exit(game, "start position not found.\n");
+		print_error_free_exit("start position not found.\n", game);
 }
