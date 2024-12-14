@@ -6,7 +6,7 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 18:27:28 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/14 16:30:21 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/12/14 17:56:20 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,20 @@
 #include <stdbool.h>
 #include <stdio.h>
 
-static bool	is_out_of_bounds(t_map *map, size_t i, size_t j)
+static bool	is_map_edge(t_map *map, size_t i, size_t j)
 {
-	return (i >= (size_t)map->height || j >= (size_t)map->width);
+	if ((i == 0 || j == 0 || i == ((size_t)map->height - 1)
+			|| j == (size_t)(map->width - 1)))
+	{
+		if (map->data[i][j] == '0')
+			return (true);
+	}
+	return (false);
 }
 
-static bool	is_wall_or_space(t_map *map, size_t i, size_t j)
+static bool	is_wall(t_map *map, size_t i, size_t j)
 {
-	return (map->data[i][j] == '1' || map->data[i][j] == ' ');
+	return (map->data[i][j] == '1');
 }
 
 static bool	explore_neighbors(t_map *map, size_t i, size_t j, char **visited)
@@ -43,9 +49,9 @@ static bool	explore_neighbors(t_map *map, size_t i, size_t j, char **visited)
 
 bool	is_surrounded_by_walls(t_map *map, size_t i, size_t j, char **visited)
 {
-	if (is_out_of_bounds(map, i, j))
+	if (is_map_edge(map, i, j))
 		return (false);
-	if (is_wall_or_space(map, i, j))
+	if (is_wall(map, i, j))
 		return (true);
 	if (visited[i][j] == VISITED)
 		return (true);
