@@ -29,24 +29,30 @@ else
     MLX_LIBS = $(MLX_LINUX) -L/usr/lib/x86_64-linux-gnu -lX11 -lXext -lm
 endif
 
-# 実行ファイル生成
-$(NAME): $(OBJS)
+$(NAME): $(LIBFT) $(MLX) $(OBJS)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBFT) $(MLX_LIBS)
 
-# オブジェクトファイル生成
+$(LIBFT):
+	$(MAKE) -C libft
+
+$(MLX):
+	$(MAKE) -C minilibx
+
 $(OBJ_DIR)/%.o: src/%.c
 	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -c $< -o $@
 
-# 全ビルド
 all: $(NAME)
 
-# クリーンアップ
 clean:
 	rm -rf $(OBJ_DIR)
+	$(MAKE) -C libft clean
+	$(MAKE) -C $(MLX_DIR) clean
 
 fclean: clean
 	rm -f $(NAME)
+	$(MAKE) -C libft fclean
+	$(MAKE) -C $(MLX_DIR) clean
 
 re: fclean all
 
