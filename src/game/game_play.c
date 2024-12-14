@@ -6,12 +6,13 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 17:24:20 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/11/28 16:54:57 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/12/14 14:12:24 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include "game.h"
+#include "utils.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -79,11 +80,13 @@ int	find_player_start_position(t_map *map, t_player *player)
 	return (0);
 }
 
-void	set_player_position(t_map *map, t_player *player)
+void	set_player_position(t_game *game)
 {
+	t_map		*map;
+	t_player	*player;
+
+	map = &game->game_data.map;
+	player = &game->game_data.player;
 	if (!find_player_start_position(map, player))
-	{
-		fprintf(stderr, "Error: Player start position not found in map.\n");
-		exit(EXIT_FAILURE);
-	}
+		print_error_free_exit("start position not found.\n", game);
 }

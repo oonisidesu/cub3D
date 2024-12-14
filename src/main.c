@@ -6,7 +6,7 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:38:01 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/10 18:00:43 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/12/14 12:44:13 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	main(int argc, char **argv)
 	init_game(&game);
 	parse_cub_file(argv[1], &game);
 	init_textures(&game);
-	set_player_position(&game.game_data.map, &game.game_data.player);
+	set_player_position(&game);
 	mlx_loop_hook(game.mlx, handle_loop, &game);
 	mlx_hook(game.win, KEYPRESS, KEYPRESS_MASK, handle_keypress, &game);
 	mlx_hook(game.win, DESTROY, DESTROY_MASK, (int (*)())exit_program, &game);
