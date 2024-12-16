@@ -6,7 +6,7 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:32:08 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/07 16:22:28 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/12/16 18:36:49 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ void	perform_dda(t_game *game, t_ray *ray)
 			ray->map_y += ray->step_y;
 			ray->side = 1;
 		}
-		if (ray->map_x < 0 || ray->map_x >= game->game_data.map.width
-			|| ray->map_y < 0 || ray->map_y >= game->game_data.map.height)
+		if (ray->map_x < 0 || ray->map_x >= (int)game->game_data.map.width
+			|| ray->map_y < 0 || ray->map_y >= (int)game->game_data.map.height)
 		{
 			print_error_free_exit("Out-of-bounds access", game);
 		}

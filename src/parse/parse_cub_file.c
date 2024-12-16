@@ -6,7 +6,7 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 13:48:34 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/16 17:19:10 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/12/16 18:41:19 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ static void	process_map(t_game *game)
 	if (!new_map)
 		print_error_free_exit("Failed to allocate memory for map\n", game);
 	i = 0;
-	while (i < (size_t)map_data->height)
+	while (i < map_data->height)
 	{
 		normalize_map_line(new_map, map_data->data[i], map_data->width, i);
 		i++;

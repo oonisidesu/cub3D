@@ -6,7 +6,7 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 18:27:28 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/12 19:37:51 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/12/16 18:42:38 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static char	**allocate_visited_map(t_map *map)
 	if (!visited)
 		return (NULL);
 	i = 0;
-	while (i < (size_t)map->height)
+	while (i < map->height)
 	{
 		visited[i] = malloc(map->width * sizeof(char));
 		if (!visited[i])
@@ -63,10 +63,10 @@ static bool	analyze_player_position(t_map *map, char **visited)
 	size_t	j;
 
 	i = 0;
-	while (i < (size_t)map->height)
+	while (i < map->height)
 	{
 		j = 0;
-		while (j < (size_t)map->width)
+		while (j < map->width)
 		{
 			if (is_valid_player_char(map, i, j))
 			{
