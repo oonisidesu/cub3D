@@ -6,7 +6,7 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 18:19:18 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/11/25 18:56:27 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/12/16 18:35:41 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	display_map_with_player(t_map *map, t_player *player)
 {
-	int	row;
-	int	col;
+	size_t	row;
+	size_t	col;
 
 	row = 0;
 	printf("\n=== Current Map with Player ===\n");
@@ -24,7 +24,7 @@ void	display_map_with_player(t_map *map, t_player *player)
 		col = 0;
 		while (col < map->width)
 		{
-			if ((int)player->x == col && (int)player->y == row)
+			if ((size_t)player->x == col && (size_t)player->y == row)
 				printf("P ");
 			else
 				printf("%c ", map->data[row][col]);

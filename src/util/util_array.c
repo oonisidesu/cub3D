@@ -6,7 +6,7 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 14:52:15 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/16 17:37:42 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/12/16 18:41:45 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ size_t	get_map_max_width(t_map *map)
 
 	max_width = 0;
 	i = 0;
-	while (i < (size_t)map->height)
+	while (i < map->height)
 	{
 		if (map->data[i] == NULL)
 		{

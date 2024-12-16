@@ -6,7 +6,7 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 17:24:20 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/14 14:12:24 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/12/16 18:39:00 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void	set_player_direction_n_s(t_player *player, char direction)
+static void	set_player_direction_n_s(t_player *player, char direction)
 {
 	if (direction == 'N')
 	{
@@ -34,7 +34,7 @@ void	set_player_direction_n_s(t_player *player, char direction)
 	}
 }
 
-void	set_player_direction_e_w(t_player *player, char direction)
+static void	set_player_direction_e_w(t_player *player, char direction)
 {
 	if (direction == 'E')
 	{
@@ -52,10 +52,10 @@ void	set_player_direction_e_w(t_player *player, char direction)
 	}
 }
 
-int	find_player_start_position(t_map *map, t_player *player)
+static bool	find_player_start_position(t_map *map, t_player *player)
 {
-	int	i;
-	int	j;
+	size_t	i;
+	size_t	j;
 
 	i = 0;
 	while (i < map->height)
@@ -71,13 +71,13 @@ int	find_player_start_position(t_map *map, t_player *player)
 				set_player_direction_n_s(player, map->data[i][j]);
 				set_player_direction_e_w(player, map->data[i][j]);
 				map->data[i][j] = '0';
-				return (1);
+				return (true);
 			}
 			j++;
 		}
 		i++;
 	}
-	return (0);
+	return (false);
 }
 
 void	set_player_position(t_game *game)

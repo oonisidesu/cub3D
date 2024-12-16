@@ -6,7 +6,7 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 18:27:28 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/16 18:19:00 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/12/16 18:42:24 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 
 static bool	is_map_edge(t_map *map, size_t i, size_t j)
 {
-	if ((i == 0 || j == 0 || i == ((size_t)map->height - 1)
-			|| j == (size_t)(map->width - 1)))
+	if ((i == 0 || j == 0 || i == (map->height - 1)
+			|| j == (map->width - 1)))
 	{
 		if (map->data[i][j] == '0')
 			return (true);
@@ -29,7 +29,7 @@ static bool	is_map_edge(t_map *map, size_t i, size_t j)
 
 static bool	is_wall(t_map *map, size_t i, size_t j)
 {
-	if (i >= (size_t)map->height || j >= (size_t)map->width)
+	if (i >= map->height || j >= map->width)
 		return (false);
 	return (map->data[i][j] == '1');
 }
@@ -38,12 +38,12 @@ static bool	explore_neighbors(t_map *map, size_t i, size_t j, char **visited)
 {
 	if (i > 0 && !is_surrounded_by_walls(map, i - 1, j, visited))
 		return (false);
-	if ((i + 1) < (size_t)map->height && !is_surrounded_by_walls(map, i + 1, j,
+	if ((i + 1) < map->height && !is_surrounded_by_walls(map, i + 1, j,
 			visited))
 		return (false);
 	if (j > 0 && !is_surrounded_by_walls(map, i, j - 1, visited))
 		return (false);
-	if ((j + 1) < (size_t)map->width && !is_surrounded_by_walls(map, i, j + 1,
+	if ((j + 1) < map->width && !is_surrounded_by_walls(map, i, j + 1,
 			visited))
 		return (false);
 	return (true);

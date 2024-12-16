@@ -6,7 +6,7 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 16:12:23 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/16 17:51:23 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/12/16 18:41:37 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static bool	init_map_array(t_map *map, size_t initial_size)
 
 static bool	ensure_map_cap(t_map *map, size_t *allocated_size)
 {
-	if (((size_t)map->height + 1) >= *allocated_size)
+	if ((map->height + 1) >= *allocated_size)
 	{
 		*allocated_size *= RESIZE_FACTOR;
 		map->data = resize_array(map->data, map->height, *allocated_size);
@@ -50,7 +50,7 @@ static bool	add_map_line(const char *line, t_map *map)
 
 static void	update_map_width(const char *line, t_map *map)
 {
-	int	line_length;
+	size_t	line_length;
 
 	line_length = ft_strlen(line);
 	if (line_length > map->width)

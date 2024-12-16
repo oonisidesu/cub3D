@@ -6,7 +6,7 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 18:27:28 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/12 16:30:34 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/12/16 18:41:57 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ bool	check_map_characters(t_map *map)
 	if (!map || !map->data)
 		return (false);
 	i = 0;
-	while (i < (size_t)map->height)
+	while (i < map->height)
 	{
 		if (!map->data[i])
 			return (false);
@@ -50,7 +50,7 @@ bool	check_player_position(t_map *map)
 		return (false);
 	i = 0;
 	player_count = 0;
-	while (i < (size_t)map->height)
+	while (i < map->height)
 	{
 		if (!map->data[i])
 			return (false);

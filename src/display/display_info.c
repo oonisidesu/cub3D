@@ -6,7 +6,7 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 14:56:47 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/09 21:51:47 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/12/16 18:34:38 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ void	display_colors(t_color *colors)
 
 void	display_map(t_map *map)
 {
-	int	row;
+	size_t	row;
 
 	row = 0;
-	printf("Map Width: %d, Height: %d\n", map->width, map->height);
+	printf("Map Width: %zu, Height: %zu\n", map->width, map->height);
 	while (row < map->height)
 	{
 		printf("%s\n", map->data[row]);

@@ -6,7 +6,7 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 16:36:45 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/09 21:27:14 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/12/16 18:40:14 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	free_textures(t_texture *textures)
 
 void	free_map(t_map *map)
 {
-	int	i;
+	size_t	i;
 
 	if (map->data)
 	{
