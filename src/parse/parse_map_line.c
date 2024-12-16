@@ -6,7 +6,7 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 16:12:23 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/10 18:52:27 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/12/16 17:51:23 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,20 @@
 #include <stdlib.h>
 #include <string.h>
 
-static bool	init_map_array(t_map *map, int initial_size)
+static bool	init_map_array(t_map *map, size_t initial_size)
 {
 	map->data = malloc(sizeof(char *) * initial_size);
 	if (!map->data)
 		return (false);
+	ft_memset(map->data, 0, sizeof(char *) * initial_size);
 	map->width = 0;
 	map->height = 0;
 	return (true);
 }
 
-static bool	ensure_map_cap(t_map *map, int *allocated_size)
+static bool	ensure_map_cap(t_map *map, size_t *allocated_size)
 {
-	if (map->height >= *allocated_size)
+	if (((size_t)map->height + 1) >= *allocated_size)
 	{
 		*allocated_size *= RESIZE_FACTOR;
 		map->data = resize_array(map->data, map->height, *allocated_size);
@@ -58,7 +59,7 @@ static void	update_map_width(const char *line, t_map *map)
 
 bool	parse_map_line(const char *line, t_map *map)
 {
-	static int	allocated_size;
+	static size_t	allocated_size;
 
 	if (map->data == NULL)
 	{

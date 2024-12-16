@@ -6,7 +6,7 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 13:48:34 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/12 20:07:55 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/12/16 17:19:10 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,6 @@ static void	process_file_lines(int fd, t_game *game, t_cub_el *cub_el_flag)
 		line = read_and_trim_line(fd, game);
 	}
 	free(line);
-	if (game->game_data.map.data != NULL)
-		game->game_data.map.data[game->game_data.map.height] = NULL;
 }
 
 static void	normalize_map_line(char **new_map, char *line, size_t width,

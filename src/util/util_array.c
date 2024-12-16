@@ -6,17 +6,17 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 14:52:15 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/11 22:49:03 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/12/16 17:37:42 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "utils.h"
 
-char	**resize_array(char **old_array, int old_size, int new_size)
+char	**resize_array(char **old_array, size_t old_size, size_t new_size)
 {
 	char	**new_array;
-	int		i;
+	size_t	i;
 
 	new_array = malloc(sizeof(char *) * new_size);
 	if (!new_array)
@@ -25,6 +25,11 @@ char	**resize_array(char **old_array, int old_size, int new_size)
 	while (i < old_size)
 	{
 		new_array[i] = old_array[i];
+		i++;
+	}
+	while (i < new_size)
+	{
+		new_array[i] = NULL;
 		i++;
 	}
 	free(old_array);
