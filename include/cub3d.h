@@ -6,7 +6,7 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 17:30:03 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/10 18:02:51 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/12/16 18:26:34 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,22 +63,19 @@ typedef struct s_texture
 	t_img		ceiling;
 }				t_texture;
 
-// 床と天井の色を保持する構造体
 typedef struct s_color
 {
 	int			floor[3];
 	int			ceiling[3];
 }				t_color;
 
-// マップデータを保持する構造体
 typedef struct s_map
 {
 	char		**data;
-	int			width;
-	int			height;
+	size_t		width;
+	size_t		height;
 }				t_map;
 
-// プレイヤー情報を保持する構造体
 typedef struct s_player
 {
 	double		x;
@@ -89,7 +86,6 @@ typedef struct s_player
 	double		plane_y;
 }				t_player;
 
-// 全体のゲームデータを保持するメイン構造体
 typedef struct s_cub3d
 {
 	t_texture	textures;
@@ -98,7 +94,6 @@ typedef struct s_cub3d
 	t_player	player;
 }				t_cub3d;
 
-// MinilibX 関連情報を含むゲーム全体の構造体
 typedef struct s_game
 {
 	void		*mlx;
