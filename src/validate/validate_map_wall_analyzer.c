@@ -6,7 +6,7 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 18:27:28 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/14 17:56:20 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/12/16 18:19:00 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ static bool	is_map_edge(t_map *map, size_t i, size_t j)
 
 static bool	is_wall(t_map *map, size_t i, size_t j)
 {
+	if (i >= (size_t)map->height || j >= (size_t)map->width)
+		return (false);
 	return (map->data[i][j] == '1');
 }
 
