@@ -6,7 +6,7 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:50:31 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/11 22:11:12 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/12/16 17:38:10 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 void		put_pixel_to_image(t_game *game, int x, int y, int color);
 void		load_texture(t_game *game, t_img *texture, char *path);
-char		**resize_array(char **old_array, int old_size, int new_size);
+char		**resize_array(char **old_array, size_t old_size, size_t new_size);
 size_t		get_map_max_height(char **map);
 size_t		get_map_max_width(t_map *map);
 char		**allocate_map_memory(size_t height, size_t width);
