@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
+/*   By: yooshima <yooshima@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:50:31 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/16 17:38:10 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/12/17 20:11:49 by yooshima         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ void		print_error_free(const char *message, t_game *game);
 void		print_error_free_exit(const char *message, t_game *game);
 void		free_game(t_game *game);
 void		free_array(char **array);
-bool		is_prefix_and_whitespace(const char *line, const char *prefix,
-				const char *whitespace_chars);
 const char	*remove_prefix_and_whitespace(const char *line, const char *prefix,
 				const char *whitespace_chars);
 bool		is_whitespace_only(const char *line);

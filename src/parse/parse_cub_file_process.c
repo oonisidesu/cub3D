@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_cub_file_process.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
+/*   By: yooshima <yooshima@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 13:48:34 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/10 18:52:02 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/12/17 20:08:53 by yooshima         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,9 @@ void	process_cub_line(const char *line, t_game *game, t_cub_el *cub_el_flag)
 {
 	if (is_texture_line(line))
 		process_texture(line, game, cub_el_flag);
-	else if (is_prefix_and_whitespace(line, "F", WHITESPACE_CHARS))
+	else if (!ft_strncmp(line, "F ", 2))
 		process_floor_color(line, game, cub_el_flag);
-	else if (is_prefix_and_whitespace(line, "C", WHITESPACE_CHARS))
+	else if (!ft_strncmp(line, "C ", 2))
 		process_ceiling_color(line, game, cub_el_flag);
 	else if (ft_strlen(line) > 0 && !is_whitespace_only(line))
 		process_map_line_wrapper(line, game, cub_el_flag);

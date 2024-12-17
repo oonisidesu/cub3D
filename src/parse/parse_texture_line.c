@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_texture_line.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
+/*   By: yooshima <yooshima@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 13:50:25 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/09 21:31:38 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/12/17 20:11:22 by yooshima         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,16 @@ static bool	process_texture(const char *line, const char *identifier,
 bool	parse_texture_line(const char *line, t_texture *textures,
 		t_cub_el *cub_el_flag)
 {
-	if (is_prefix_and_whitespace(line, "NO", WHITESPACE_CHARS))
+	if (!ft_strncmp(line, "NO ", 3))
 		return (process_texture(line, "NO", &cub_el_flag->has_no,
 				&textures->c_north));
-	else if (is_prefix_and_whitespace(line, "SO", WHITESPACE_CHARS))
+	else if (!ft_strncmp(line, "SO ", 3))
 		return (process_texture(line, "SO", &cub_el_flag->has_so,
 				&textures->c_south));
-	else if (is_prefix_and_whitespace(line, "WE", WHITESPACE_CHARS))
+	else if (!ft_strncmp(line, "WE ", 3))
 		return (process_texture(line, "WE", &cub_el_flag->has_we,
 				&textures->c_west));
-	else if (is_prefix_and_whitespace(line, "EA", WHITESPACE_CHARS))
+	else if (!ft_strncmp(line, "EA ", 3))
 		return (process_texture(line, "EA", &cub_el_flag->has_ea,
 				&textures->c_east));
 	return (false);
@@ -53,13 +53,13 @@ bool	parse_texture_line(const char *line, t_texture *textures,
 
 bool	is_texture_line(const char *line)
 {
-	if (is_prefix_and_whitespace(line, "NO", WHITESPACE_CHARS))
+	if (!ft_strncmp(line, "NO ", 3))
 		return (true);
-	if (is_prefix_and_whitespace(line, "SO", WHITESPACE_CHARS))
+	if (!ft_strncmp(line, "SO ", 3))
 		return (true);
-	if (is_prefix_and_whitespace(line, "WE", WHITESPACE_CHARS))
+	if (!ft_strncmp(line, "WE ", 3))
 		return (true);
-	if (is_prefix_and_whitespace(line, "EA", WHITESPACE_CHARS))
+	if (!ft_strncmp(line, "EA ", 3))
 		return (true);
 	return (false);
 }

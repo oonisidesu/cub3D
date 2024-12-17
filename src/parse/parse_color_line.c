@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_color_line.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
+/*   By: yooshima <yooshima@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 13:50:22 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/06 18:35:15 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/12/17 20:07:53 by yooshima         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
