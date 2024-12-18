@@ -6,7 +6,7 @@
 /*   By: yooshima <yooshima@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 17:23:51 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/17 20:11:58 by yooshima         ###   ########.fr       */
+/*   Updated: 2024/12/18 18:21:07 by yooshima         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,17 +53,16 @@ int	open_cub_file(const char *filename, t_game *game)
 	return (fd);
 }
 
-char	*read_and_trim_line(int fd, t_game *game)
+char	*read_and_trim_line(int fd)
 {
 	char	*line;
-	char	*trimmed_line;
+	char	*new_line_ptr;
 
 	line = get_next_line(fd);
 	if (line == NULL)
 		return (NULL);
-	trimmed_line = ft_strtrim_r(line, WHITESPACE_CHARS);
-	free(line);
-	if (trimmed_line == NULL)
-		print_error_free_exit("Failed to trimming\n", game);
-	return (trimmed_line);
+	new_line_ptr = ft_strchr(line, '\n');
+	if (new_line_ptr)
+		*new_line_ptr = '\0';
+	return (line);
 }

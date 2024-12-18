@@ -6,7 +6,7 @@
 /*   By: yooshima <yooshima@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 13:50:25 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/18 15:14:47 by yooshima         ###   ########.fr       */
+/*   Updated: 2024/12/18 18:42:16 by yooshima         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,13 +53,13 @@ bool	parse_texture_line(const char *line, t_texture *textures,
 
 bool	is_texture_line(const char *line)
 {
-	if (!ft_strncmp(line, "NO ", 3))
+	if (!ft_strncmp(line, "NO", 2))
 		return (true);
-	if (!ft_strncmp(line, "SO ", 3))
+	if (!ft_strncmp(line, "SO", 2))
 		return (true);
-	if (!ft_strncmp(line, "WE ", 3))
+	if (!ft_strncmp(line, "WE", 2))
 		return (true);
-	if (!ft_strncmp(line, "EA ", 3))
+	if (!ft_strncmp(line, "EA", 2))
 		return (true);
 	return (false);
 }
