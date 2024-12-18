@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_texture_line.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
+/*   By: yooshima <yooshima@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 13:50:25 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/09 21:31:38 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/12/18 18:42:16 by yooshima         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static bool	process_texture(const char *line, const char *identifier,
 		return (false);
 	*flag = true;
 	line += ft_strlen(identifier);
-	while (*line != '\0' && ft_strchr(WHITESPACE_CHARS, *line) != NULL)
+	while (*line != '\0' && ft_strchr(" ", *line) != NULL)
 		line++;
 	return (set_texture(texture_path, line));
 }
@@ -36,30 +36,30 @@ static bool	process_texture(const char *line, const char *identifier,
 bool	parse_texture_line(const char *line, t_texture *textures,
 		t_cub_el *cub_el_flag)
 {
-	if (is_prefix_and_whitespace(line, "NO", WHITESPACE_CHARS))
-		return (process_texture(line, "NO", &cub_el_flag->has_no,
+	if (!ft_strncmp(line, "NO ", 3))
+		return (process_texture(line, "NO ", &cub_el_flag->has_no,
 				&textures->c_north));
-	else if (is_prefix_and_whitespace(line, "SO", WHITESPACE_CHARS))
-		return (process_texture(line, "SO", &cub_el_flag->has_so,
+	else if (!ft_strncmp(line, "SO ", 3))
+		return (process_texture(line, "SO ", &cub_el_flag->has_so,
 				&textures->c_south));
-	else if (is_prefix_and_whitespace(line, "WE", WHITESPACE_CHARS))
-		return (process_texture(line, "WE", &cub_el_flag->has_we,
+	else if (!ft_strncmp(line, "WE ", 3))
+		return (process_texture(line, "WE ", &cub_el_flag->has_we,
 				&textures->c_west));
-	else if (is_prefix_and_whitespace(line, "EA", WHITESPACE_CHARS))
-		return (process_texture(line, "EA", &cub_el_flag->has_ea,
+	else if (!ft_strncmp(line, "EA ", 3))
+		return (process_texture(line, "EA ", &cub_el_flag->has_ea,
 				&textures->c_east));
 	return (false);
 }
 
 bool	is_texture_line(const char *line)
 {
-	if (is_prefix_and_whitespace(line, "NO", WHITESPACE_CHARS))
+	if (!ft_strncmp(line, "NO", 2))
 		return (true);
-	if (is_prefix_and_whitespace(line, "SO", WHITESPACE_CHARS))
+	if (!ft_strncmp(line, "SO", 2))
 		return (true);
-	if (is_prefix_and_whitespace(line, "WE", WHITESPACE_CHARS))
+	if (!ft_strncmp(line, "WE", 2))
 		return (true);
-	if (is_prefix_and_whitespace(line, "EA", WHITESPACE_CHARS))
+	if (!ft_strncmp(line, "EA", 2))
 		return (true);
 	return (false);
 }

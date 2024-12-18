@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_color_line.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
+/*   By: yooshima <yooshima@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 13:50:22 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/06 18:35:15 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/12/18 19:12:46 by yooshima         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,24 +27,11 @@ static bool	parse_color_value(const char **line, int *color_value)
 			return (false);
 		(*line)++;
 	}
-	while (ft_isdigit(**line))
-		(*line)++;
 	if (start == *line)
 		return (false);
 	*color_value = ft_atoi_long(start);
 	if (*color_value < 0 || *color_value > 255)
 		return (false);
-	return (true);
-}
-
-static bool	parse_comma(const char **line, int color_index)
-{
-	if (color_index < 2)
-	{
-		if (**line != ',')
-			return (false);
-		(*line)++;
-	}
 	return (true);
 }
 
@@ -57,11 +44,9 @@ bool	parse_color_line(const char *line, int color[3])
 	{
 		if (!parse_color_value(&line, &color[color_index]))
 			return (false);
-		if (!parse_comma(&line, color_index))
-			return (false);
+		if (*line == ',')
+			line++;
 		color_index++;
 	}
-	while (*line == ' ')
-		line++;
 	return (*line == '\0');
 }

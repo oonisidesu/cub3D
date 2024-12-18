@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_play.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
+/*   By: yooshima <yooshima@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 17:24:20 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/16 18:39:00 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/12/18 19:33:39 by yooshima         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static void	set_player_direction_e_w(t_player *player, char direction)
 	}
 }
 
-static bool	find_player_start_position(t_map *map, t_player *player)
+void	set_player_position(t_map *map, t_player *player)
 {
 	size_t	i;
 	size_t	j;
@@ -71,22 +71,9 @@ static bool	find_player_start_position(t_map *map, t_player *player)
 				set_player_direction_n_s(player, map->data[i][j]);
 				set_player_direction_e_w(player, map->data[i][j]);
 				map->data[i][j] = '0';
-				return (true);
 			}
 			j++;
 		}
 		i++;
 	}
-	return (false);
-}
-
-void	set_player_position(t_game *game)
-{
-	t_map		*map;
-	t_player	*player;
-
-	map = &game->game_data.map;
-	player = &game->game_data.player;
-	if (!find_player_start_position(map, player))
-		print_error_free_exit("start position not found.\n", game);
 }

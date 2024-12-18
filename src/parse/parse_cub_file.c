@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_cub_file.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
+/*   By: yooshima <yooshima@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 13:48:34 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/16 18:41:19 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/12/18 19:05:40 by yooshima         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void	process_file_lines(int fd, t_game *game, t_cub_el *cub_el_flag)
 {
 	char	*line;
 
-	line = read_and_trim_line(fd, game);
+	line = read_and_trim_line(fd);
 	while (line != NULL)
 	{
 		if (!validate_line(line, game))
@@ -34,7 +34,7 @@ static void	process_file_lines(int fd, t_game *game, t_cub_el *cub_el_flag)
 		}
 		process_cub_line(line, game, cub_el_flag);
 		free(line);
-		line = read_and_trim_line(fd, game);
+		line = read_and_trim_line(fd);
 	}
 	free(line);
 }

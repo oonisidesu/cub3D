@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
+/*   By: yooshima <yooshima@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 14:34:31 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/14 12:44:05 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/12/18 19:33:59 by yooshima         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ typedef struct s_offset
 	double	dy;
 }			t_offset;
 
-void		set_player_position(t_game *game);
+void		set_player_position(t_map *map, t_player *player);
 void		move_player(t_map *map, t_player *player, t_offset offset);
 void		move_handle(t_offset *offset, double dx, double dy);
 void		rotation_handle(t_player *player, double rot_speed);
