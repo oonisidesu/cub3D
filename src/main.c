@@ -6,7 +6,7 @@
 /*   By: yooshima <yooshima@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:38:01 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/17 20:07:43 by yooshima         ###   ########.fr       */
+/*   Updated: 2024/12/18 19:33:31 by yooshima         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	main(int argc, char **argv)
 	init_game(&game);
 	parse_cub_file(argv[1], &game);
 	init_textures(&game);
-	set_player_position(&game);
+	set_player_position(&game.game_data.map, &game.game_data.player);
 	mlx_loop_hook(game.mlx, handle_loop, &game);
 	mlx_hook(game.win, KEYPRESS, KEYPRESS_MASK, handle_keypress, &game);
 	mlx_hook(game.win, DESTROY, DESTROY_MASK, (int (*)())exit_program, &game);
