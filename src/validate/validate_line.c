@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
+/*   By: yooshima <yooshima@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 18:27:28 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/10 18:15:11 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/12/18 14:36:33 by yooshima         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
