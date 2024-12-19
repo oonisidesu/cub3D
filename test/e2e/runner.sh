@@ -1,8 +1,8 @@
 #!/bin/bash
 
-EXECUTABLE="./cub3D"
+EXECUTABLE="../.././cub3D"
 
-MAP_DIR="map/error"
+MAP_DIR="../../map/error"
 
 RED='\033[0;31m'
 GREEN='\033[0;32m'
