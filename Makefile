@@ -17,7 +17,7 @@ OBJ_DIR = obj
 OBJS = $(SRCS:src/%.c=$(OBJ_DIR)/%.o)
 
 LIBFT = ./libft/libft.a
-MLX_LINUX = ./minilibx/libmlx.a
+MLX_LINUX = ./minilibx/libmlx_Linux.a
 MLX_DARWIN = ./minilibx/libmlx_Darwin.a
 X11_LIBS = /usr/X11R6/lib/libX11.dylib /usr/X11R6/lib/libXext.dylib
 
