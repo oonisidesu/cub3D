@@ -1,6 +1,6 @@
 #!/bin/bash
 
-EXECUTABLE="../.././cub3D"
+EXECUTABLE="./cub3D"
 
 ERROR_MAP_DIR="map/error"
 OK_MAP_DIR="map/ok"
