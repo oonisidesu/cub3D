@@ -6,7 +6,7 @@
 /*   By: yooshima <yooshima@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 13:48:34 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/18 18:39:00 by yooshima         ###   ########.fr       */
+/*   Updated: 2024/12/22 13:22:55 by yooshima         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,6 @@
 #include "utils.h"
 #include "validate.h"
 #include <fcntl.h>
-
-static void	process_texture(const char *line, t_game *game,
-		t_cub_el *cub_el_flag)
-{
-	if (parse_texture_line(line, &game->game_data.textures,
-			cub_el_flag) == false)
-		print_error_free_exit("Failed to parse texture line\n", game);
-}
 
 static void	process_floor_color(const char *line, t_game *game,
 		t_cub_el *cub_el_flag)

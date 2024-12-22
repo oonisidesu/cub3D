@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
+/*   By: yooshima <yooshima@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 14:34:31 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/10 18:52:40 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/12/22 14:33:26 by yooshima         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <stdlib.h>
 
 # define MAP_INITIAL_SIZE 10
+# define TEXTURE_IDENTIFIER_LENGTH 3
 # define RESIZE_FACTOR 2
 # define WHITESPACE_CHARS " \t\n\r\v\f"
 
@@ -30,5 +31,6 @@ bool	parse_texture_line(const char *line, t_texture *textures,
 bool	parse_map_line(const char *line, t_map *map);
 bool	is_texture_line(const char *line);
 void	process_cub_line(const char *line, t_game *game, t_cub_el *cub_el_flag);
+bool	process_texture(const char *line, t_game *game, t_cub_el *cub_el_flag);
 
 #endif
