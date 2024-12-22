@@ -6,7 +6,7 @@
 /*   By: yooshima <yooshima@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 18:27:28 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/21 16:50:11 by yooshima         ###   ########.fr       */
+/*   Updated: 2024/12/22 18:41:19 by yooshima         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@
 
 static bool	is_map_edge(t_map *map, size_t i, size_t j)
 {
-	if (((i == 0 || j == 0 || i == (map->height - 1)
+	if (((i == 0 || j == 0 || i == (map->height - 1) \
 			|| j == (map->width - 1))) && map->data[i][j] == '0')
-			return (true);
+		return (true);
 	return (false);
 }
 
