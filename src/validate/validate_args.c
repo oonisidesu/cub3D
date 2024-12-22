@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_args.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
+/*   By: yooshima <yooshima@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 17:59:04 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/10 18:08:27 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/12/21 14:57:09 by yooshima         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_map_wall_analyzer.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
+/*   By: yooshima <yooshima@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 18:27:28 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/16 18:42:24 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/12/21 16:50:11 by yooshima         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,9 @@
 
 static bool	is_map_edge(t_map *map, size_t i, size_t j)
 {
-	if ((i == 0 || j == 0 || i == (map->height - 1)
-			|| j == (map->width - 1)))
-	{
-		if (map->data[i][j] == '0')
+	if (((i == 0 || j == 0 || i == (map->height - 1)
+			|| j == (map->width - 1))) && map->data[i][j] == '0')
 			return (true);
-	}
 	return (false);
 }
 
