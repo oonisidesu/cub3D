@@ -6,7 +6,7 @@
 /*   By: yooshima <yooshima@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 18:27:28 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/22 14:33:03 by yooshima         ###   ########.fr       */
+/*   Updated: 2024/12/22 14:54:54 by yooshima         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,24 +21,25 @@ static bool	is_empty_line(const char *line)
 	return (ft_strlen(line) == 0);
 }
 
-static bool	completed_texture_and_color(t_cub_el *cub_el_flag)
+static bool	is_completed_elements(t_cub_el *cub_el_flag)
 {
 	return (cub_el_flag->has_no && cub_el_flag->has_so && cub_el_flag->has_we
 		&& cub_el_flag->has_ea && cub_el_flag->has_f && cub_el_flag->has_c);
 }
 
-static bool	is_map_line(const char *line, t_game *game, t_cub_el *cub_el_flag)
+static bool	check_map_line(const char *line, t_game *game, \
+							t_cub_el *cub_el_flag)
 {
 	bool	completed;
-	char	*map_line;
+	char	*valid_char_ptr;
 
-	completed = completed_texture_and_color(cub_el_flag);
+	completed = is_completed_elements(cub_el_flag);
 	while (*line)
 	{
-		map_line = ft_strchr(VALID_MAP_CHARS, *line);
-		if (!map_line && !completed)
+		valid_char_ptr = ft_strchr(VALID_MAP_CHARS, *line);
+		if (!valid_char_ptr && !completed)
 			print_error_free_exit("Invalid element in .cub file\n", game);
-		if (!map_line)
+		if (!valid_char_ptr)
 			print_error_free_exit("Invalid character in map line\n", game);
 		line++;
 	}
@@ -58,7 +59,7 @@ bool	validate_line(const char *line, t_game *game, t_cub_el *cub_el_flag)
 		return (true);
 	if (is_texture_or_color_line(line))
 		return (true);
-	if (is_map_line(line, game, cub_el_flag))
+	if (check_map_line(line, game, cub_el_flag))
 		return (true);
 	return (false);
 }

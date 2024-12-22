@@ -23,8 +23,8 @@ echo "--------------------------------------"
 find "$ERROR_MAP_DIR" -name "*.cub" > $TEMP_FILE
 echo "$ERROR_MAP_DIR/DOES_NOT_EXIST.cub" >> $TEMP_FILE
 echo " " >> $TEMP_FILE
-echo -e "$OK_MAP_DIR/NOMAL.cub $OK_MAP_DIR/MAP_SMALL.cub" >> $TEMP_FILE
-echo -e "$OK_MAP_DIR/NOMAL.cub test" >> $TEMP_FILE
+echo "$OK_MAP_DIR/NOMAL.cub $OK_MAP_DIR/MAP_SMALL.cub" >> $TEMP_FILE
+echo "$OK_MAP_DIR/NOMAL.cub test" >> $TEMP_FILE
 
 while read file; do
     echo -e "Running: ${GREEN}$EXECUTABLE $file${NC}"

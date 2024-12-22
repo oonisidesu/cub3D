@@ -6,7 +6,7 @@
 /*   By: yooshima <yooshima@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 13:48:34 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/22 13:22:55 by yooshima         ###   ########.fr       */
+/*   Updated: 2024/12/22 14:53:47 by yooshima         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,19 @@
 #include "utils.h"
 #include "validate.h"
 #include <fcntl.h>
+
+static bool	is_texture_line(const char *line)
+{
+	if (!ft_strncmp(line, "NO", 2))
+		return (true);
+	if (!ft_strncmp(line, "SO", 2))
+		return (true);
+	if (!ft_strncmp(line, "WE", 2))
+		return (true);
+	if (!ft_strncmp(line, "EA", 2))
+		return (true);
+	return (false);
+}
 
 static void	process_floor_color(const char *line, t_game *game,
 		t_cub_el *cub_el_flag)

@@ -6,7 +6,7 @@
 /*   By: yooshima <yooshima@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 13:50:25 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/22 14:33:35 by yooshima         ###   ########.fr       */
+/*   Updated: 2024/12/22 14:53:37 by yooshima         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,19 +29,6 @@ static bool	set_texture(t_game *game, const char *line,
 	*flag = true;
 	line += TEXTURE_IDENTIFIER_LENGTH;
 	return (allocate_texture(texture_path, line));
-}
-
-bool	is_texture_line(const char *line)
-{
-	if (!ft_strncmp(line, "NO", 2))
-		return (true);
-	if (!ft_strncmp(line, "SO", 2))
-		return (true);
-	if (!ft_strncmp(line, "WE", 2))
-		return (true);
-	if (!ft_strncmp(line, "EA", 2))
-		return (true);
-	return (false);
 }
 
 bool	process_texture(const char *line, t_game *game,
