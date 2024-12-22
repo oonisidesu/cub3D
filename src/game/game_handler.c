@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_handler.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
+/*   By: yooshima <yooshima@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 18:34:21 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/14 13:04:49 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/12/21 16:16:57 by yooshima         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
