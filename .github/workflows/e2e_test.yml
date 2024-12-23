@@ -19,15 +19,7 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y gcc make xorg libx11-dev libxext-dev zlib1g-dev libbsd-dev
-      
-      - name: Build MiniLibX
-        run: |
-          make -C ./minilibx
-        
-      - name: Build libft
-        run: |
-          make -C ./libft
+          sudo apt-get install -y gcc make xorg libx11-dev libxext-dev zlib1g-dev libbsd-dev xvfb
     
       - name: Compile binary
         run: |
@@ -38,7 +30,7 @@ jobs:
         run: |
           file ./cub3D
 
-      - name: Run Bash Script
+      - name: Run Bash Script with Xvfb
         run: |
           chmod +x ./test/e2e/runner.sh
-          ./test/e2e/runner.sh
+          xvfb-run ./test/e2e/runner.sh
