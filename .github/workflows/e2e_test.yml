@@ -23,12 +23,10 @@ jobs:
 
       - name: Compile libft
         run: |
-          make -C libft fclean
           make -C libft
         
       - name: Compile cub3D
         run: |
-          make clean
           make
 
       - name: Verify binary architecture
