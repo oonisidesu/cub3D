@@ -40,4 +40,4 @@ jobs:
           DISPLAY: ":99"
         run: |
           chmod +x ./test/e2e/runner.sh
-          xvfb-run -a ./test/e2e/runner.sh
+          ./test/e2e/runner.sh
