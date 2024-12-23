@@ -20,17 +20,24 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y gcc make xorg libx11-dev libxext-dev zlib1g-dev libbsd-dev xvfb
-    
+
+      - name: Clean previous artifacts
+        run: |
+          rm -rf obj cub3D
+          make -C libft fclean
+          make -C minilibx clean
+
       - name: Compile binary
         run: |
-          make clean || true
-          make
+          make VERBOSE=1
 
       - name: Verify binary architecture
         run: |
           file ./cub3D
 
       - name: Run Bash Script with Xvfb
+        env:
+          DISPLAY: ":99"
         run: |
           chmod +x ./test/e2e/runner.sh
-          xvfb-run ./test/e2e/runner.sh
+          xvfb-run -a ./test/e2e/runner.sh
