@@ -6,7 +6,7 @@
 /*   By: yooshima <yooshima@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 13:48:34 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/23 21:21:57 by yooshima         ###   ########.fr       */
+/*   Updated: 2024/12/23 23:34:30 by yooshima         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,7 @@ static void	process_file_lines(int fd, t_game *game, t_cub_el *cub_el_flag)
 	line = read_and_trim_line(fd);
 	while (line != NULL)
 	{
-		if (!validate_line(line, game, cub_el_flag))
-		{
-			free(line);
-			close(fd);
-			print_error_free_exit("Invalid line in .cub file\n", game);
-		}
+		validate_line(fd, line, game, cub_el_flag);
 		process_cub_line(line, game, cub_el_flag);
 		free(line);
 		line = read_and_trim_line(fd);
