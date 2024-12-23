@@ -21,15 +21,15 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y gcc make xorg libx11-dev libxext-dev zlib1g-dev libbsd-dev xvfb
 
-        - name: Compile libft
-          run: |
-            make -C libft fclean
-            make -C libft
+      - name: Compile libft
+        run: |
+          make -C libft fclean
+          make -C libft
         
-        - name: Compile cub3D
-          run: |
-            make clean
-            make
+      - name: Compile cub3D
+        run: |
+          make clean
+          make
 
       - name: Verify binary architecture
         run: |
