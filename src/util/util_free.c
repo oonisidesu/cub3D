@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   util_free.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
+/*   By: yooshima <yooshima@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 16:36:45 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/16 18:40:14 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/12/23 20:26:21 by yooshima         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,14 @@ void	free_mlx_resources(t_game *game)
 {
 	if (game->img.img)
 		mlx_destroy_image(game->mlx, game->img.img);
+	if (game->game_data.textures.north.img)
+		mlx_destroy_image(game->mlx, game->game_data.textures.north.img);
+	if (game->game_data.textures.south.img)
+		mlx_destroy_image(game->mlx, game->game_data.textures.south.img);
+	if (game->game_data.textures.west.img)
+		mlx_destroy_image(game->mlx, game->game_data.textures.west.img);
+	if (game->game_data.textures.east.img)
+		mlx_destroy_image(game->mlx, game->game_data.textures.east.img);
 	if (game->win)
 		mlx_destroy_window(game->mlx, game->win);
 	if (game->mlx)
