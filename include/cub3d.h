@@ -6,7 +6,7 @@
 /*   By: yooshima <yooshima@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 17:30:03 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/22 12:34:33 by yooshima         ###   ########.fr       */
+/*   Updated: 2024/12/24 18:06:19 by yooshima         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,11 +71,18 @@ typedef struct s_color
 	bool		ceiling_set;
 }				t_color;
 
+typedef struct s_parse
+{
+	char		*line;
+	int			fd;
+}				t_parse;
+
 typedef struct s_map
 {
 	char		**data;
 	size_t		width;
 	size_t		height;
+	t_parse		parse;
 }				t_map;
 
 typedef struct s_player

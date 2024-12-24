@@ -6,14 +6,13 @@
 /*   By: yooshima <yooshima@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:38:01 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/18 19:33:31 by yooshima         ###   ########.fr       */
+/*   Updated: 2024/12/24 17:36:43 by yooshima         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include "display.h"
 #include "game.h"
-#include "get_next_line.h"
 #include "init.h"
 #include "parse.h"
 #include "utils.h"

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_map_wall.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
+/*   By: yooshima <yooshima@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 18:27:28 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/16 18:42:38 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/12/24 18:53:34 by yooshima         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ static void	free_visited_map(char **visited, size_t height)
 	i = 0;
 	while (i < height)
 	{
-		free(visited[i]);
+		wrap_free(visited[i]);
 		i++;
 	}
-	free(visited);
+	wrap_free(visited);
 }
 
 static char	**allocate_visited_map(t_map *map)

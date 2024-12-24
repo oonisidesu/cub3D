@@ -5,6 +5,8 @@
         "cub3d.h": "c",
         "utils.h": "c",
         "stdio.h": "c",
-        "validate.h": "c"
+        "validate.h": "c",
+        "init.h": "c",
+        "libft.h": "c"
     }
 }

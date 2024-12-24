@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   util_array.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
+/*   By: yooshima <yooshima@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 14:52:15 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/16 18:41:45 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/12/24 18:51:49 by yooshima         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char	**resize_array(char **old_array, size_t old_size, size_t new_size)
 		new_array[i] = NULL;
 		i++;
 	}
-	free(old_array);
+	wrap_free(old_array);
 	return (new_array);
 }
 
@@ -86,8 +86,8 @@ char	**allocate_map_memory(size_t height, size_t width)
 		if (!map[i])
 		{
 			while (i > 0)
-				free(map[--i]);
-			free(map);
+				wrap_free(map[--i]);
+			wrap_free(map);
 			return (NULL);
 		}
 		ft_memset(map[i], '0', width);

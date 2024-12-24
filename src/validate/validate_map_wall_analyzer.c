@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_map_wall_analyzer.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
+/*   By: yooshima <yooshima@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 18:27:28 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/22 19:10:42 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/12/24 18:53:21 by yooshima         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,12 +65,12 @@ static bool	process_queue(t_check_params *params)
 		params->current = current;
 		if (is_map_edge(params->map, current.i, current.j))
 		{
-			free(params->queue);
+			wrap_free(params->queue);
 			return (false);
 		}
 		check_neighbors(params);
 	}
-	free(params->queue);
+	wrap_free(params->queue);
 	return (true);
 }
 
