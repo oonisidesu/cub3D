@@ -6,7 +6,7 @@
 /*   By: yooshima <yooshima@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:38:01 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/24 17:36:43 by yooshima         ###   ########.fr       */
+/*   Updated: 2024/12/24 19:58:15 by yooshima         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	main(int argc, char **argv)
 	t_game	game;
 
 	if (validate_args(argc, argv))
-		print_error_exit("Invalid arguments");
+		print_error_exit("Invalid arguments\n");
 	init_game(&game);
 	parse_cub_file(argv[1], &game);
 	init_textures(&game);
