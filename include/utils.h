@@ -6,7 +6,7 @@
 /*   By: yooshima <yooshima@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:50:31 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/18 18:21:15 by yooshima         ###   ########.fr       */
+/*   Updated: 2024/12/25 11:33:06 by yooshima         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,9 @@ void		free_array(char **array);
 const char	*remove_prefix_and_whitespace(const char *line, const char *prefix,
 				const char *whitespace_chars);
 bool		is_whitespace_only(const char *line);
-int			open_cub_file(const char *filename, t_game *game);
+void		open_cub_file(const char *filename, t_game *game);
 char		*read_and_trim_line(int fd);
+void		wrap_close(int *fd);
+void		free_parse_obj(t_parse *parse);
 
 #endif

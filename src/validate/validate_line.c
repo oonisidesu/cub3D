@@ -6,7 +6,7 @@
 /*   By: yooshima <yooshima@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 18:27:28 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/22 14:54:54 by yooshima         ###   ########.fr       */
+/*   Updated: 2024/12/24 18:57:09 by yooshima         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,13 +53,14 @@ static bool	is_texture_or_color_line(const char *line)
 		|| ft_strncmp(line, "F", 1) == 0 || ft_strncmp(line, "C", 1) == 0);
 }
 
-bool	validate_line(const char *line, t_game *game, t_cub_el *cub_el_flag)
+void	validate_line(const char *line, t_game *game, t_cub_el *cub_el_flag)
 {
 	if (is_empty_line(line))
-		return (true);
-	if (is_texture_or_color_line(line))
-		return (true);
-	if (check_map_line(line, game, cub_el_flag))
-		return (true);
-	return (false);
+		return ;
+	else if (is_texture_or_color_line(line))
+		return ;
+	else if (check_map_line(line, game, cub_el_flag))
+		return ;
+	else
+		print_error_free_exit("Invalid line in .cub file\n", game);
 }

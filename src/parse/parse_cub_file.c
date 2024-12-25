@@ -6,12 +6,11 @@
 /*   By: yooshima <yooshima@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 13:48:34 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/22 12:41:13 by yooshima         ###   ########.fr       */
+/*   Updated: 2024/12/25 11:29:26 by yooshima         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "display.h"
-#include "get_next_line.h"
 #include "init.h"
 #include "libft.h"
 #include "parse.h"
@@ -19,24 +18,20 @@
 #include "validate.h"
 #include <fcntl.h>
 
-static void	process_file_lines(int fd, t_game *game, t_cub_el *cub_el_flag)
+static void	process_file_lines(t_game *game, t_cub_el *cub_el_flag)
 {
-	char	*line;
+	char	**line;
 
-	line = read_and_trim_line(fd);
-	while (line != NULL)
+	line = &game->game_data.map.parse.line;
+	*line = read_and_trim_line(game->game_data.map.parse.fd);
+	while (*line != NULL)
 	{
-		if (!validate_line(line, game, cub_el_flag))
-		{
-			free(line);
-			close(fd);
-			print_error_free_exit("Invalid line in .cub file\n", game);
-		}
-		process_cub_line(line, game, cub_el_flag);
-		free(line);
-		line = read_and_trim_line(fd);
+		validate_line(*line, game, cub_el_flag);
+		process_cub_line(*line, game, cub_el_flag);
+		free(*line);
+		*line = read_and_trim_line(game->game_data.map.parse.fd);
 	}
-	free(line);
+	free(*line);
 }
 
 static void	normalize_map_line(char **new_map, char *line, size_t width,
@@ -87,12 +82,13 @@ static void	process_map(t_game *game)
 void	parse_cub_file(const char *filename, t_game *game)
 {
 	t_cub_el	cub_el_flag;
-	int			fd;
+	int			*fd;
 
+	fd = &game->game_data.map.parse.fd;
 	init_cub_el(&cub_el_flag);
-	fd = open_cub_file(filename, game);
-	process_file_lines(fd, game, &cub_el_flag);
-	close(fd);
+	open_cub_file(filename, game);
+	process_file_lines(game, &cub_el_flag);
+	wrap_close(fd);
 	process_map(game);
 	validate_cub_file(game, &cub_el_flag);
 }

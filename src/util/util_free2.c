@@ -1,23 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   util_texture.c                                     :+:      :+:    :+:   */
+/*   util_free2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yooshima <yooshima@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/21 15:12:19 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/24 20:02:39 by yooshima         ###   ########.fr       */
+/*   Created: 2024/11/29 16:36:45 by ootsuboyosh       #+#    #+#             */
+/*   Updated: 2024/12/25 11:29:26 by yooshima         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "cub3d.h"
 #include "utils.h"
 
-void	load_texture(t_game *game, t_img *texture, char *path)
+void	free_parse_obj(t_parse *parse)
 {
-	texture->img = mlx_xpm_file_to_image(game->mlx, path, &texture->width,
-			&texture->height);
-	if (!texture->img)
-		print_error_free_exit("Failed to load texture\n", game);
-	texture->addr = mlx_get_data_addr(texture->img, &texture->bits_per_pixel,
-			&texture->line_length, &texture->endian);
+	if (parse->line)
+		free(parse->line);
+	wrap_close(&parse->fd);
 }

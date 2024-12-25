@@ -6,7 +6,7 @@
 /*   By: yooshima <yooshima@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 14:34:31 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/22 14:54:12 by yooshima         ###   ########.fr       */
+/*   Updated: 2024/12/24 19:35:11 by yooshima         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # define TEXTURE_IDENTIFIER_LENGTH 3
 # define RESIZE_FACTOR 2
 # define WHITESPACE_CHARS " \t\n\r\v\f"
+# define FD_CLOSED -2
 
 bool	parse_color_line(const char *line, int color[3]);
 void	parse_cub_file(const char *filename, t_game *game);
@@ -31,5 +32,6 @@ bool	parse_texture_line(const char *line, t_texture *textures,
 bool	parse_map_line(const char *line, t_map *map);
 void	process_cub_line(const char *line, t_game *game, t_cub_el *cub_el_flag);
 bool	process_texture(const char *line, t_game *game, t_cub_el *cub_el_flag);
+char	*get_line(int fd);
 
 #endif

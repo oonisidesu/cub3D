@@ -6,11 +6,10 @@
 /*   By: yooshima <yooshima@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 17:23:51 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/21 16:36:40 by yooshima         ###   ########.fr       */
+/*   Updated: 2024/12/24 19:35:35 by yooshima         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
 #include "libft.h"
 #include "parse.h"
 #include "utils.h"
@@ -43,14 +42,14 @@ bool	is_whitespace_only(const char *line)
 	return (true);
 }
 
-int	open_cub_file(const char *filename, t_game *game)
+void	open_cub_file(const char *filename, t_game *game)
 {
-	int	fd;
+	int	*fd;
 
-	fd = open(filename, O_RDONLY);
-	if (fd < 0)
+	fd = &game->game_data.map.parse.fd;
+	*fd = open(filename, O_RDONLY);
+	if (*fd < 0)
 		print_error_free_exit("Failed to open file\n", game);
-	return (fd);
 }
 
 char	*read_and_trim_line(int fd)
@@ -58,11 +57,18 @@ char	*read_and_trim_line(int fd)
 	char	*line;
 	char	*new_line_ptr;
 
-	line = get_next_line(fd);
+	line = get_line(fd);
 	if (line == NULL)
 		return (NULL);
 	new_line_ptr = ft_strchr(line, '\n');
 	if (new_line_ptr)
 		*new_line_ptr = '\0';
 	return (line);
+}
+
+void	wrap_close(int *fd)
+{
+	if (*fd != FD_CLOSED && close(*fd) == -1)
+		print_error_exit("Failed to close file\n");
+	*fd = FD_CLOSED;
 }
