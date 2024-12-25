@@ -6,14 +6,14 @@
 /*   By: yooshima <yooshima@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 16:45:22 by yootsubo          #+#    #+#             */
-/*   Updated: 2024/12/25 10:47:49 by yooshima         ###   ########.fr       */
+/*   Updated: 2024/12/25 11:15:22 by yooshima         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "utils.h"
 
-bool	append_char(char **str, char c)
+static bool	append_char(char **str, char c)
 {
 	char	*new;
 	char	join[2];
