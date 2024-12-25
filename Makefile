@@ -1,7 +1,7 @@
 NAME = cub3D
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -Iinclude -I./libft -I./minilibx
+CFLAGS = -Wall -Wextra -Werror -Iinclude -I./libft -I./minilibx -O0
 
 SRCS = src/main.c \
        src/display/display_info.c src/display/display_player.c \

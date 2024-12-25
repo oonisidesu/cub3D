@@ -7,6 +7,7 @@
         "stdio.h": "c",
         "validate.h": "c",
         "init.h": "c",
-        "libft.h": "c"
+        "libft.h": "c",
+        "stdbool.h": "c"
     }
 }

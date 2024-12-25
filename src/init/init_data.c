@@ -6,11 +6,12 @@
 /*   By: yooshima <yooshima@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 15:47:36 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/23 21:11:12 by yooshima         ###   ########.fr       */
+/*   Updated: 2024/12/25 23:55:05 by yooshima         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "init.h"
+#include "parse.h"
 #include "ray.h"
 #include <math.h>
 
@@ -31,6 +32,7 @@ void	init_game_data(t_cub3d *game_data)
 		game_data->colors.ceiling[i] = -1;
 		i++;
 	}
+	game_data->map.parse.fd = FD_CLOSED;
 }
 
 void	init_game(t_game *game)

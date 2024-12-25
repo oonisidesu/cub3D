@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   util_error.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
+/*   By: yooshima <yooshima@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 15:55:25 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/07 16:27:45 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/12/26 00:00:45 by yooshima         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

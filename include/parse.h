@@ -6,7 +6,7 @@
 /*   By: yooshima <yooshima@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 14:34:31 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/24 19:35:11 by yooshima         ###   ########.fr       */
+/*   Updated: 2024/12/25 23:58:54 by yooshima         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,9 @@
 # define MAP_INITIAL_SIZE 10
 # define TEXTURE_IDENTIFIER_LENGTH 3
 # define RESIZE_FACTOR 2
-# define WHITESPACE_CHARS " \t\n\r\v\f"
+# define FD_ERROR -1
 # define FD_CLOSED -2
+# define WHITESPACE_CHARS " \t\n\r\v\f"
 
 bool	parse_color_line(const char *line, int color[3]);
 void	parse_cub_file(const char *filename, t_game *game);

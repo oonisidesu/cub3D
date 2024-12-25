@@ -6,7 +6,7 @@
 /*   By: yooshima <yooshima@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 17:23:51 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/24 19:35:35 by yooshima         ###   ########.fr       */
+/*   Updated: 2024/12/26 00:02:12 by yooshima         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ char	*read_and_trim_line(int fd)
 
 void	wrap_close(int *fd)
 {
-	if (*fd != FD_CLOSED && close(*fd) == -1)
+	if (*fd != FD_CLOSED && *fd != FD_ERROR && close(*fd) == -1)
 		print_error_exit("Failed to close file\n");
 	*fd = FD_CLOSED;
 }
