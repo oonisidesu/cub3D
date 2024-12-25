@@ -6,7 +6,7 @@
 /*   By: yooshima <yooshima@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 18:27:28 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/24 18:53:34 by yooshima         ###   ########.fr       */
+/*   Updated: 2024/12/25 11:29:26 by yooshima         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ static void	free_visited_map(char **visited, size_t height)
 	i = 0;
 	while (i < height)
 	{
-		wrap_free(visited[i]);
+		free(visited[i]);
 		i++;
 	}
-	wrap_free(visited);
+	free(visited);
 }
 
 static char	**allocate_visited_map(t_map *map)

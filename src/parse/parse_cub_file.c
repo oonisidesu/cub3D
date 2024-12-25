@@ -6,7 +6,7 @@
 /*   By: yooshima <yooshima@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 13:48:34 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/24 19:15:51 by yooshima         ###   ########.fr       */
+/*   Updated: 2024/12/25 11:29:26 by yooshima         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ static void	process_file_lines(t_game *game, t_cub_el *cub_el_flag)
 	{
 		validate_line(*line, game, cub_el_flag);
 		process_cub_line(*line, game, cub_el_flag);
-		wrap_free(*line);
+		free(*line);
 		*line = read_and_trim_line(game->game_data.map.parse.fd);
 	}
-	wrap_free(*line);
+	free(*line);
 }
 
 static void	normalize_map_line(char **new_map, char *line, size_t width,

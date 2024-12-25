@@ -6,7 +6,7 @@
 /*   By: yooshima <yooshima@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 18:27:28 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/24 18:53:21 by yooshima         ###   ########.fr       */
+/*   Updated: 2024/12/25 11:29:26 by yooshima         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,12 +65,12 @@ static bool	process_queue(t_check_params *params)
 		params->current = current;
 		if (is_map_edge(params->map, current.i, current.j))
 		{
-			wrap_free(params->queue);
+			free(params->queue);
 			return (false);
 		}
 		check_neighbors(params);
 	}
-	wrap_free(params->queue);
+	free(params->queue);
 	return (true);
 }
 

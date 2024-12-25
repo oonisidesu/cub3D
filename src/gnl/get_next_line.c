@@ -6,7 +6,7 @@
 /*   By: yooshima <yooshima@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 16:45:22 by yootsubo          #+#    #+#             */
-/*   Updated: 2024/12/25 11:15:22 by yooshima         ###   ########.fr       */
+/*   Updated: 2024/12/25 11:29:26 by yooshima         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static bool	append_char(char **str, char c)
 	new = ft_strjoin(*str, join);
 	if (!new)
 		return (false);
-	wrap_free(*str);
+	free(*str);
 	*str = new;
 	return (true);
 }
@@ -40,7 +40,7 @@ char	*get_line(int fd)
 	{
 		read_size = read(fd, &buf, 1);
 		if (read_size == -1 || (read_size == 0 && !ft_strlen(result)))
-			return (wrap_free (result), NULL);
+			return (free (result), NULL);
 		if (!append_char(&result, buf))
 			return (NULL);
 		if (buf == '\n' || read_size == 0)

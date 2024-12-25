@@ -6,7 +6,7 @@
 /*   By: yooshima <yooshima@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 16:36:45 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/24 19:24:21 by yooshima         ###   ########.fr       */
+/*   Updated: 2024/12/25 11:29:26 by yooshima         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@
 void	free_textures(t_texture *textures)
 {
 	if (textures->c_north)
-		wrap_free(textures->c_north);
+		free(textures->c_north);
 	if (textures->c_south)
-		wrap_free(textures->c_south);
+		free(textures->c_south);
 	if (textures->c_west)
-		wrap_free(textures->c_west);
+		free(textures->c_west);
 	if (textures->c_east)
-		wrap_free(textures->c_east);
+		free(textures->c_east);
 }
 
 void	free_map(t_map *map)
@@ -35,10 +35,10 @@ void	free_map(t_map *map)
 		while (i < map->height)
 		{
 			if (map->data[i])
-				wrap_free(map->data[i]);
+				free(map->data[i]);
 			i++;
 		}
-		wrap_free(map->data);
+		free(map->data);
 	}
 }
 
@@ -59,7 +59,7 @@ void	free_mlx_resources(t_game *game)
 	if (game->mlx)
 	{
 		mlx_destroy_display(game->mlx);
-		wrap_free(game->mlx);
+		free(game->mlx);
 	}
 }
 
@@ -80,8 +80,8 @@ void	free_array(char **array)
 	i = 0;
 	while (array[i])
 	{
-		wrap_free(array[i]);
+		free(array[i]);
 		i++;
 	}
-	wrap_free(array);
+	free(array);
 }

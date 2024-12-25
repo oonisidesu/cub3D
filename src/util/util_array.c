@@ -6,7 +6,7 @@
 /*   By: yooshima <yooshima@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 14:52:15 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/24 18:51:49 by yooshima         ###   ########.fr       */
+/*   Updated: 2024/12/25 11:29:26 by yooshima         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char	**resize_array(char **old_array, size_t old_size, size_t new_size)
 		new_array[i] = NULL;
 		i++;
 	}
-	wrap_free(old_array);
+	free(old_array);
 	return (new_array);
 }
 
@@ -86,8 +86,8 @@ char	**allocate_map_memory(size_t height, size_t width)
 		if (!map[i])
 		{
 			while (i > 0)
-				wrap_free(map[--i]);
-			wrap_free(map);
+				free(map[--i]);
+			free(map);
 			return (NULL);
 		}
 		ft_memset(map[i], '0', width);
