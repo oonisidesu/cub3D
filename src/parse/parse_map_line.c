@@ -6,116 +6,71 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 16:12:23 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/11/15 17:14:08 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/12/16 18:41:37 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "parse.h"
+#include "utils.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
-void	parse_map_line(char *line, t_list **map_lines, int *map_height)
+static bool	init_map_array(t_map *map, size_t initial_size)
 {
-	(void)line;
-	(void)map_lines;
-	(void)map_height;
-	// char	*line_copy;
-	// // デバッグ: 受け取った行を表示
-	// printf("[DEBUG] Processing line: '%s', Current height: %d\n", line,
-	// 	*map_height);
-	// // 空行が来た場合はスキップ
-	// if (ft_strlen(line) == 0)
-	// {
-	// 	printf("[DEBUG] Skipping empty line\n");
-	// 	free(line);
-	// 	return ;
-	// }
-	// // `line` を解放する前にコピー
-	// line_copy = ft_strdup(line);
-	// if (!line_copy)
-	// {
-	// 	perror("[DEBUG] Error duplicating line");
-	// 	free(line);
-	// 	exit(EXIT_FAILURE);
-	// }
-	// free(line);
-	// // リストに追加
-	// ft_lstadd_back(map_lines, ft_lstnew(line_copy));
-	// (*map_height)++;
+	map->data = malloc(sizeof(char *) * initial_size);
+	if (!map->data)
+		return (false);
+	ft_memset(map->data, 0, sizeof(char *) * initial_size);
+	map->width = 0;
+	map->height = 0;
+	return (true);
 }
 
-void	finalize_map(t_map *map, t_list *map_lines, int map_height)
+static bool	ensure_map_cap(t_map *map, size_t *allocated_size)
 {
-	(void)map;
-	(void)map_lines;
-	(void)map_height;
-	// t_list	*tmp;
-	// int		i;
-	// int		line_length;
-	// // デバッグ: 関数の開始
-	// printf("[DEBUG] Entering finalize_map with height: %d\n", map_height);
-	// tmp = map_lines;
-	// i = 0;
-	// // メモリ確保
-	// printf("[DEBUG] Allocating memory for map->data\n");
-	// map->data = malloc(sizeof(char *) * (map_height + 1));
-	// if (!map->data)
-	// {
-	// 	perror("[DEBUG] Error allocating memory for map");
-	// 	ft_lstclear(&map_lines, free);
-	// 	exit(EXIT_FAILURE);
-	// }
-	// printf("[DEBUG] Memory allocation successful\n");
-	// // リストを配列に変換
-	// printf("[DEBUG] Converting list to array, starting with map_height:
-	// %d\n",
-	// 	map_height);
-	// while (tmp)
-	// {
-	// 	printf("[DEBUG] Current tmp address: %p\n", (void *)tmp);
-	// 	// tmp->content が NULL の場合を確認
-	// 	if (!tmp->content)
-	// 	{
-	// 		printf("[DEBUG] Warning: tmp->content is NULL. Skipping this node.\n");
-	// 		tmp = tmp->next;
-	// 		continue ;
-	// 	}
-	// 	printf("[DEBUG] Current tmp->content: '%s'\n", (char *)tmp->content);
-	// 	// ft_strdup が NULL を返した場合のエラーハンドリング
-	// 	map->data[i] = ft_strdup((char *)tmp->content);
-	// 	if (!map->data[i])
-	// 	{
-	// 		perror("[DEBUG] Error duplicating list content to map->data");
-	// 		ft_lstclear(&map_lines, free);
-	// 		exit(EXIT_FAILURE);
-	// 	}
-	// 	printf("[DEBUG] Added line to map->data[%d]: '%s'\n", i, map->data[i]);
-	// 	// 次のノードへ進む
-	// 	tmp = tmp->next;
-	// 	printf("[DEBUG] Moving to next tmp. New tmp address: %p\n",
-	// 		(void *)tmp);
-	// 	i++;
-	// }
-	// map->data[i] = NULL;
-	// printf("[DEBUG] Finished converting list to array. Total lines: %d\n",
-	// i);
-	// // 幅と高さを更新
-	// printf("[DEBUG] Calculating map dimensions\n");
-	// map->height = map_height;
-	// map->width = 0;
-	// for (int j = 0; j < map_height; j++)
-	// {
-	// 	line_length = ft_strlen(map->data[j]);
-	// 	if (line_length > map->width)
-	// 		map->width = line_length;
-	// 	printf("[DEBUG] Line length of map->data[%d]: %d\n", j, line_length);
-	// }
-	// // デバッグ: 幅と高さの確定
-	// printf("[DEBUG] Final map width: %d, height: %d\n", map->width,
-	// 	map->height);
-	// // リストを解放
-	// printf("[DEBUG] Clearing list\n");
-	// ft_lstclear(&map_lines, free);
-	// printf("[DEBUG] List cleared. Exiting finalize_map\n");
+	if ((map->height + 1) >= *allocated_size)
+	{
+		*allocated_size *= RESIZE_FACTOR;
+		map->data = resize_array(map->data, map->height, *allocated_size);
+		if (!map->data)
+			return (false);
+	}
+	return (true);
+}
+
+static bool	add_map_line(const char *line, t_map *map)
+{
+	map->data[map->height] = ft_strdup(line);
+	if (!map->data[map->height])
+		return (false);
+	map->height++;
+	return (true);
+}
+
+static void	update_map_width(const char *line, t_map *map)
+{
+	size_t	line_length;
+
+	line_length = ft_strlen(line);
+	if (line_length > map->width)
+		map->width = line_length;
+}
+
+bool	parse_map_line(const char *line, t_map *map)
+{
+	static size_t	allocated_size;
+
+	if (map->data == NULL)
+	{
+		allocated_size = MAP_INITIAL_SIZE;
+		if (!init_map_array(map, allocated_size))
+			return (false);
+	}
+	if (!ensure_map_cap(map, &allocated_size))
+		return (false);
+	if (!add_map_line(line, map))
+		return (false);
+	update_map_width(line, map);
+	return (true);
 }

@@ -3,41 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
+/*   By: yooshima <yooshima@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/11 19:32:55 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/11/15 16:01:22 by ootsuboyosh      ###   ########.fr       */
+/*   Created: 2024/11/20 16:38:01 by ootsuboyosh       #+#    #+#             */
+/*   Updated: 2024/12/24 19:58:15 by yooshima         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include "display.h"
-#include "get_next_line.h"
+#include "game.h"
 #include "init.h"
 #include "parse.h"
+#include "utils.h"
+#include "validate.h"
 #include <fcntl.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 
-// エラーメッセージと使用方法の表示
-void	display_usage_and_exit(const char *program_name)
-{
-	fprintf(stderr, "Usage: %s <map.cub>\n", program_name);
-	exit(1);
-}
-
 int	main(int argc, char **argv)
 {
-	if (argc != 2)
-	{
-		display_usage_and_exit(argv[0]);
-	}
-	t_cub3d game;                   // ゲームデータの構造体を作成
-	init_game_data(&game);          // ゲームデータの初期化
-	parse_cub_file(argv[1], &game); // パース処理の呼び出し
-	display_cub3d(&game);
-	// TODO: パースされたデータを用いて描画処理やゲームロジックを開始する
-	// 正常終了
+	t_game	game;
+
+	if (validate_args(argc, argv))
+		print_error_exit("Invalid arguments\n");
+	init_game(&game);
+	parse_cub_file(argv[1], &game);
+	init_textures(&game);
+	set_player_position(&game.game_data.map, &game.game_data.player);
+	mlx_loop_hook(game.mlx, handle_loop, &game);
+	mlx_hook(game.win, KEYPRESS, KEYPRESS_MASK, handle_keypress, &game);
+	mlx_hook(game.win, DESTROY, DESTROY_MASK, (int (*)())exit_program, &game);
+	mlx_loop(game.mlx);
 	return (0);
 }

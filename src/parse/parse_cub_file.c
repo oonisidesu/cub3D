@@ -3,57 +3,92 @@
 /*                                                        :::      ::::::::   */
 /*   parse_cub_file.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
+/*   By: yooshima <yooshima@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 13:48:34 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/11/15 17:12:50 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2024/12/25 11:29:26 by yooshima         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "display.h"
+#include "init.h"
 #include "libft.h"
 #include "parse.h"
+#include "utils.h"
+#include "validate.h"
 #include <fcntl.h>
 
-// ファイルを解析してt_cub3d構造体にデータを保存
-void	parse_cub_file(const char *filename, t_cub3d *game)
+static void	process_file_lines(t_game *game, t_cub_el *cub_el_flag)
 {
-	int		fd;
-	char	*line;
-	int		map_height;
+	char	**line;
 
-	map_height = 0;
-	t_list *map_lines = NULL; // リストの初期化
-	fd = open(filename, O_RDONLY);
-	if (fd < 0)
+	line = &game->game_data.map.parse.line;
+	*line = read_and_trim_line(game->game_data.map.parse.fd);
+	while (*line != NULL)
 	{
-		perror("Error opening file");
+		validate_line(*line, game, cub_el_flag);
+		process_cub_line(*line, game, cub_el_flag);
+		free(*line);
+		*line = read_and_trim_line(game->game_data.map.parse.fd);
+	}
+	free(*line);
+}
+
+static void	normalize_map_line(char **new_map, char *line, size_t width,
+		size_t row)
+{
+	size_t	j;
+
+	if (!new_map || !new_map[row] || !line)
 		return ;
-	}
-	while ((line = get_next_line(fd)) != NULL)
+	j = 0;
+	while (line[j] && j < width)
 	{
-		if (ft_strncmp(line, "NO ", 3) == 0 || ft_strncmp(line, "SO ", 3) == 0
-			|| ft_strncmp(line, "WE ", 3) == 0 || ft_strncmp(line, "EA ",
-				3) == 0)
-		{
-			parse_texture_line(line, &game->textures);
-		}
-		else if (ft_strncmp(line, "F ", 2) == 0)
-		{
-			parse_color_line(line + 2, game->colors.floor);
-		}
-		else if (ft_strncmp(line, "C ", 2) == 0)
-		{
-			parse_color_line(line + 2, game->colors.ceiling);
-		}
-		else if (ft_strlen(line) > 0)
-		{
-			// マップデータの行であると判断　TODO
-			parse_map_line(line, &map_lines, &map_height);
-		}
-		free(line);
+		if (ft_strchr(WHITESPACE_CHARS, line[j]))
+			new_map[row][j] = '0';
+		else
+			new_map[row][j] = line[j];
+		j++;
 	}
-	// マップを確定 TODO
-	finalize_map(&game->map, map_lines, map_height);
-	close(fd);
+	while (j < width)
+	{
+		new_map[row][j] = '0';
+		j++;
+	}
+}
+
+static void	process_map(t_game *game)
+{
+	t_map	*map_data;
+	char	**new_map;
+	size_t	i;
+
+	map_data = &game->game_data.map;
+	map_data->height = get_map_max_height(map_data->data);
+	map_data->width = get_map_max_width(map_data);
+	new_map = allocate_map_memory(map_data->height, map_data->width);
+	if (!new_map)
+		print_error_free_exit("Failed to allocate memory for map\n", game);
+	i = 0;
+	while (i < map_data->height)
+	{
+		normalize_map_line(new_map, map_data->data[i], map_data->width, i);
+		i++;
+	}
+	free_array(map_data->data);
+	map_data->data = new_map;
+}
+
+void	parse_cub_file(const char *filename, t_game *game)
+{
+	t_cub_el	cub_el_flag;
+	int			*fd;
+
+	fd = &game->game_data.map.parse.fd;
+	init_cub_el(&cub_el_flag);
+	open_cub_file(filename, game);
+	process_file_lines(game, &cub_el_flag);
+	wrap_close(fd);
+	process_map(game);
+	validate_cub_file(game, &cub_el_flag);
 }

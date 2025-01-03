@@ -18,7 +18,6 @@
 
 # Libraries
 *.lib
-*.a
 *.la
 *.lo
 
@@ -51,4 +50,4 @@ Module.symvers
 Mkfile.old
 dkms.conf
 
-*.cub
+cub3D
