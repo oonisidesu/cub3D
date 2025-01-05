@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_wall.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
+/*   By: yooshima <yooshima@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 16:14:17 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/14 12:38:56 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2025/01/05 15:48:50 by yooshima         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void	draw_wall(t_game *game, t_ray *ray, t_wall_params *params)
 
 	draw_params.texture = select_texture(game, ray);
 	if (!draw_params.texture)
-		print_error_free_exit("Error: Texture not found", game);
+		print_error_free_exit("Error: Texture not found\n", game);
 	draw_params.tex_x = cal_tex_x(&game->game_data.player, ray,
 			draw_params.texture);
 	draw_params.step = (double)draw_params.texture->height

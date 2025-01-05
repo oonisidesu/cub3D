@@ -77,6 +77,8 @@ static void	process_map(t_game *game)
 	size_t	i;
 
 	map_data = &game->game_data.map;
+	if (!map_data->data)
+		print_error_free_exit("Failed to read map\n", game);
 	map_data->height = get_map_max_height(map_data->data);
 	map_data->width = get_map_max_width(map_data);
 	new_map = allocate_map_memory(map_data->height, map_data->width);
