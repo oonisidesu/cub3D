@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_calculate.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
+/*   By: yooshima <yooshima@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:32:08 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/16 18:36:49 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2025/01/05 15:48:46 by yooshima         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,10 @@ void	perform_dda(t_game *game, t_ray *ray)
 		if (ray->map_x < 0 || ray->map_x >= (int)game->game_data.map.width
 			|| ray->map_y < 0 || ray->map_y >= (int)game->game_data.map.height)
 		{
-			print_error_free_exit("Out-of-bounds access", game);
+			print_error_free_exit("Out-of-bounds access\n", game);
 		}
 		if (game->game_data.map.data == NULL)
-			print_error_free_exit("Map data is NULL", game);
+			print_error_free_exit("Map data is NULL\n", game);
 		if (game->game_data.map.data[ray->map_y][ray->map_x] == '1')
 			ray->hit = 1;
 	}
