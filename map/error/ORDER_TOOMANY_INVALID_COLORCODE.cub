@@ -1,7 +1,7 @@
-NO ./TEXTURE/kita.xpm
-SO ./TEXTURE/minami.xpm
-WE ./TEXTURE/nishi.xpm
-EA ./TEXTURE/higashi.xpm
+NO ./texture/kita.xpm
+SO ./texture/minami.xpm
+WE ./texture/nishi.xpm
+EA ./texture/higashi.xpm
 
 F 85,107,47
 T 95,157,42
