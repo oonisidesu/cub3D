@@ -6,7 +6,7 @@
 /*   By: yooshima <yooshima@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 17:23:51 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/26 00:02:12 by yooshima         ###   ########.fr       */
+/*   Updated: 2025/01/05 16:15:19 by yooshima         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,17 +29,6 @@ const char	*remove_prefix_and_whitespace(const char *line, const char *prefix,
 	while (*line != '\0' && ft_strchr(whitespace_chars, *line) != NULL)
 		line++;
 	return (line);
-}
-
-bool	is_whitespace_only(const char *line)
-{
-	while (*line)
-	{
-		if (!ft_strchr(WHITESPACE_CHARS, *line))
-			return (false);
-		line++;
-	}
-	return (true);
 }
 
 void	open_cub_file(const char *filename, t_game *game)
