@@ -6,7 +6,7 @@
 /*   By: yooshima <yooshima@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 13:48:34 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/24 18:01:44 by yooshima         ###   ########.fr       */
+/*   Updated: 2025/01/05 15:40:41 by yooshima         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,6 @@ void	process_cub_line(const char *line, t_game *game, t_cub_el *cub_el_flag)
 		process_floor_color(line, game, cub_el_flag);
 	else if (!ft_strncmp(line, "C ", 2))
 		process_ceiling_color(line, game, cub_el_flag);
-	else if (ft_strlen(line) > 0 && !is_whitespace_only(line))
+	else if (ft_strlen(line) > 0)
 		process_map_line_wrapper(line, game, cub_el_flag);
 }
