@@ -13,11 +13,12 @@
 #include "init.h"
 #include "utils.h"
 
-void	init_mlx(t_game *game)
+void	init_mlx_texture(t_game *game)
 {
 	game->mlx = mlx_init();
 	if (!game->mlx)
 		print_error_free_exit("initializing MinilibX\n", game);
+	init_textures(game);
 	game->win = mlx_new_window(game->mlx, WINDOW_WIDTH, WINDOW_HEIGHT,
 			WINDOW_TITLE);
 	if (!game->win)

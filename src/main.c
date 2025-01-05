@@ -30,7 +30,7 @@ int	main(int argc, char **argv)
 		print_error_exit("Invalid arguments\n");
 	init_game(&game);
 	parse_cub_file(argv[1], &game);
-	init_textures(&game);
+	init_mlx_texture(&game);
 	set_player_position(&game.game_data.map, &game.game_data.player);
 	mlx_loop_hook(game.mlx, handle_loop, &game);
 	mlx_hook(game.win, KEYPRESS, KEYPRESS_MASK, handle_keypress, &game);

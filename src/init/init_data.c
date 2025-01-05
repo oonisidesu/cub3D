@@ -20,23 +20,17 @@ void	init_cub_el(t_cub_el *cub_el_flag)
 	ft_bzero(cub_el_flag, sizeof(t_cub_el));
 }
 
-void	init_game_data(t_cub3d *game_data)
+void	init_game(t_game *game)
 {
 	int	i;
 
-	ft_bzero(game_data, sizeof(t_cub3d));
+	ft_bzero(game, sizeof(t_cub3d));
 	i = 0;
 	while (i < 3)
 	{
-		game_data->colors.floor[i] = -1;
-		game_data->colors.ceiling[i] = -1;
+		game->game_data.colors.floor[i] = -1;
+		game->game_data.colors.ceiling[i] = -1;
 		i++;
 	}
-	game_data->map.parse.fd = FD_CLOSED;
-}
-
-void	init_game(t_game *game)
-{
-	init_mlx(game);
-	init_game_data(&game->game_data);
+	game->game_data.map.parse.fd = FD_CLOSED;
 }

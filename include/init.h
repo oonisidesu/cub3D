@@ -19,8 +19,7 @@
 # include <stdlib.h>
 
 void	init_game(t_game *game);
-void	init_game_data(t_cub3d *game);
-void	init_mlx(t_game *game);
+void	init_mlx_texture(t_game *game);
 void	init_textures(t_game *game);
 void	init_wall_params(t_wall_params *wall_params, t_ray *ray);
 void	init_cub_el(t_cub_el *cub_el_flag);
