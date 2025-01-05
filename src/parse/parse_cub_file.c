@@ -6,7 +6,7 @@
 /*   By: yooshima <yooshima@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 13:48:34 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/25 11:29:26 by yooshima         ###   ########.fr       */
+/*   Updated: 2025/01/05 11:59:20 by yooshima         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ static void	process_map(t_game *game)
 	size_t	i;
 
 	map_data = &game->game_data.map;
+	if (!map_data->data)
+		print_error_free_exit("Failed to read map\n", game);
 	map_data->height = get_map_max_height(map_data->data);
 	map_data->width = get_map_max_width(map_data);
 	new_map = allocate_map_memory(map_data->height, map_data->width);
