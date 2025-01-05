@@ -6,7 +6,7 @@
 /*   By: yooshima <yooshima@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 13:48:34 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2025/01/05 11:59:20 by yooshima         ###   ########.fr       */
+/*   Updated: 2025/01/05 15:46:25 by yooshima         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,17 @@
 #include "validate.h"
 #include <fcntl.h>
 
+static void	validate_remaining_lines(t_game *game, char **line)
+{
+	while (*line)
+	{
+		if (ft_strlen(*line))
+			print_error_free_exit("Invalid line in map\n", game);
+		free(*line);
+		*line = read_and_trim_line(game->game_data.map.parse.fd);
+	}
+}
+
 static void	process_file_lines(t_game *game, t_cub_el *cub_el_flag)
 {
 	char	**line;
@@ -26,6 +37,8 @@ static void	process_file_lines(t_game *game, t_cub_el *cub_el_flag)
 	*line = read_and_trim_line(game->game_data.map.parse.fd);
 	while (*line != NULL)
 	{
+		if (game->game_data.map.data && !ft_strlen(*line))
+			return (validate_remaining_lines(game, line));
 		validate_line(*line, game, cub_el_flag);
 		process_cub_line(*line, game, cub_el_flag);
 		free(*line);
