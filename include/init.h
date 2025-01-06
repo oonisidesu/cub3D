@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
+/*   By: yooshima <yooshima@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 15:48:46 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/06 16:32:45 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2025/01/05 21:57:13 by yooshima         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,7 @@
 # include <stdlib.h>
 
 void	init_game(t_game *game);
-void	init_game_data(t_cub3d *game);
-void	init_mlx(t_game *game);
+void	init_mlx_texture(t_game *game);
 void	init_textures(t_game *game);
 void	init_wall_params(t_wall_params *wall_params, t_ray *ray);
 void	init_cub_el(t_cub_el *cub_el_flag);
