@@ -1,6 +1,6 @@
-NO ./TEXTURE/kita.xpm
-SO ./TEXTURE/minami.xpm
-WE ./TEXTURE/nishi.xpm
+NO ./texture/kita.xpm
+SO ./texture/minami.xpm
+WE ./texture/nishi.xpm
 
 F 85,107,47
 C 30,144,255
