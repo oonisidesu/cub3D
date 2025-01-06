@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
+/*   By: yooshima <yooshima@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 15:48:46 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/06 16:32:45 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2025/01/05 21:57:13 by yooshima         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

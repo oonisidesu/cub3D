@@ -6,7 +6,7 @@
 /*   By: yooshima <yooshima@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 15:47:36 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/25 23:55:05 by yooshima         ###   ########.fr       */
+/*   Updated: 2025/01/06 10:03:45 by yooshima         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	init_game(t_game *game)
 {
 	int	i;
 
-	ft_bzero(game, sizeof(t_cub3d));
+	ft_bzero(game, sizeof(t_game));
 	i = 0;
 	while (i < 3)
 	{

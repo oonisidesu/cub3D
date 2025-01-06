@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_mlx.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
+/*   By: yooshima <yooshima@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 15:47:36 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/07 16:22:28 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2025/01/05 21:56:16 by yooshima         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
