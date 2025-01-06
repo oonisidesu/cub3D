@@ -6,7 +6,7 @@
 /*   By: ootsuboyoshiyuki <ootsuboyoshiyuki@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 18:26:54 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/11/28 17:20:21 by ootsuboyosh      ###   ########.fr       */
+/*   Updated: 2025/01/06 15:30:18 by ootsuboyosh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,49 @@
 #include "game.h"
 #include <math.h>
 
+static void	move_player_x(t_map *map, t_player *player, double next_x,
+		double margin)
+{
+	double	check_x;
+
+	if (next_x > player->x)
+		check_x = next_x + margin;
+	else
+		check_x = next_x - margin;
+	if (check_x >= 0 && check_x < map->width
+		&& map->data[(int)(player->y)][(int)check_x] != '1')
+	{
+		player->x = next_x;
+	}
+}
+
+static void	move_player_y(t_map *map, t_player *player, double next_y,
+		double margin)
+{
+	double	check_y;
+
+	if (next_y > player->y)
+		check_y = next_y + margin;
+	else
+		check_y = next_y - margin;
+	if (check_y >= 0 && check_y < map->height
+		&& map->data[(int)check_y][(int)(player->x)] != '1')
+	{
+		player->y = next_y;
+	}
+}
+
 void	move_player(t_map *map, t_player *player, t_offset offset)
 {
-	int	new_x;
-	int	new_y;
+	double	margin;
+	double	next_x;
+	double	next_y;
 
-	new_x = (int)(player->x + offset.dx);
-	new_y = (int)(player->y + offset.dy);
-	if (map->data[new_y][new_x] != '1')
-	{
-		player->x += offset.dx;
-		player->y += offset.dy;
-	}
+	margin = 0.2;
+	next_x = player->x + offset.dx;
+	next_y = player->y + offset.dy;
+	move_player_x(map, player, next_x, margin);
+	move_player_y(map, player, next_y, margin);
 }
 
 void	move_handle(t_offset *offset, double dx, double dy)
