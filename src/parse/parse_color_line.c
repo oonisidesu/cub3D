@@ -6,7 +6,7 @@
 /*   By: yooshima <yooshima@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 13:50:22 by ootsuboyosh       #+#    #+#             */
-/*   Updated: 2024/12/18 19:12:46 by yooshima         ###   ########.fr       */
+/*   Updated: 2025/01/06 14:50:42 by yooshima         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ bool	parse_color_line(const char *line, int color[3])
 	{
 		if (!parse_color_value(&line, &color[color_index]))
 			return (false);
-		if (*line == ',')
+		if (color_index < 2 && *line == ',')
 			line++;
 		color_index++;
 	}
