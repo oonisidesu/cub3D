@@ -16,10 +16,7 @@
 
 ## **画面**
 
-<video width="640" height="360" controls>
-  <source src="mp4/movie.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+![動画のプレビュー](gif/movie.gif)
 
 ---
 
