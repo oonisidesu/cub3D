@@ -26,7 +26,7 @@ echo " " >> $TEMP_FILE
 echo "$OK_MAP_DIR/NOMAL.cub $OK_MAP_DIR/MAP_SMALL.cub" >> $TEMP_FILE
 echo "$OK_MAP_DIR/NOMAL.cub test" >> $TEMP_FILE
 
-while read file; do
+sort "$TEMP_FILE" | while read -r file; do
     echo -e "Running: ${GREEN}$EXECUTABLE $file${NC}"
         echo "$file" > $ARG_FILE
         OUTPUT=$(xargs "$EXECUTABLE" < "$ARG_FILE" 2>&1)
@@ -40,6 +40,6 @@ while read file; do
             echo "$OUTPUT" | sed "s/^/    /"
         fi
     echo "--------------------------------------"
-done < "$TEMP_FILE"
+done
 
 echo -e "${YELLOW}All tests completed.${NC}"
