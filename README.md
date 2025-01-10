@@ -24,7 +24,7 @@
 
 1. **リポジトリをクローン**
    ```bash
-   git clone --recurse-submodules https://github.com/yourusername/cub3D.git
+   git clone --recurse-submodules https://github.com/oonisidesu/cub3D.git
    cd cub3D
    ```
 
